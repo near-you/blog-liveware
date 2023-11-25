@@ -14,8 +14,6 @@ return [
     |
     */
 
-    'home_url' => '/',
-
     'broadcasting' => [
 
         // 'echo' => [
