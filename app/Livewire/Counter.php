@@ -23,6 +23,9 @@ class Counter extends Component
 
     public function render(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-        return view('livewire.counter');
+        $title = 'Counter';
+        return view('livewire.counter', [
+            'title' => $title,
+        ]);
     }
 }

@@ -1,8 +1,11 @@
 <div>
-    {{-- Knowing others is intelligence; knowing yourself is true wisdom. --}}
-    <h1 class="font-light">{{ $count }}</h1>
+    <h1 class="text-3xl font-bold sm:text-2xl">{{ $count }}</h1>
 
-    <button class="font-bold" wire:click="increment">+</button>
+    <div class="">
+        <button class="rounded-full btn-primary" wire:click="increment">+</button>
 
-    <button wire:click="decrement">-</button>
+        <button class="rounded-full btn-primary" wire:click="decrement">-</button>
+    </div>
+
+
 </div>
