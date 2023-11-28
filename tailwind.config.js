@@ -15,8 +15,13 @@ export default {
         montserrat: ['Montserrat', 'sans-serif'],
         opensans: ['Open Sans', 'sans-serif'],
       },
-      container: {
-        center: true,
+      // container: {
+      //   center: true,
+      // },
+      colors: {
+        "main-gray": "#767676",
+        "secondary-gray": "#f8f8f8",
+        "dunkel-gray": "#333",
       }
     },
   },

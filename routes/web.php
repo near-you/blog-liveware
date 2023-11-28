@@ -1,8 +1,8 @@
 <?php
 
-use App\Livewire\Counter;
-use App\Livewire\Post;
-use App\Livewire\User;
+use App\Livewire\Home;
+use App\Livewire\About;
+use App\Livewire\Service;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,12 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
-Route::get('/counter', Counter::class);
+Route::get('/', Home::class);
 
-Route::get('/posts', Post::class);
+Route::get('/about', About::class);
 
-Route::get('/users', User::class);
+Route::get('/service', Service::class);

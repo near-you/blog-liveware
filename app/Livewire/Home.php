@@ -5,9 +5,10 @@ namespace App\Livewire;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
-class Counter extends Component
+class Home extends Component
 {
     public int $count = 1;
 
@@ -21,11 +22,9 @@ class Counter extends Component
         $this->count--;
     }
 
+    #[Title('Blog | Home')]
     public function render(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $title = 'Counter';
-        return view('livewire.counter', [
-            'title' => $title,
-        ]);
+        return view('home');
     }
 }
