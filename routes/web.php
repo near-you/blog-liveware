@@ -1,7 +1,10 @@
 <?php
 
+use App\Livewire\Contact;
 use App\Livewire\Home;
 use App\Livewire\About;
+use App\Livewire\News;
+use App\Livewire\Portfolio;
 use App\Livewire\Service;
 use Illuminate\Support\Facades\Route;
 
@@ -16,12 +19,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-
 Route::get('/', Home::class);
 
 Route::get('/about', About::class);
 
 Route::get('/service', Service::class);
+
+Route::get('/portfolio', Portfolio::class);
+
+Route::get('/news', News::class);
+
+Route::get('/contact', Contact::class);

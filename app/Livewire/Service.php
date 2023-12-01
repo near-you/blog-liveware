@@ -10,7 +10,7 @@ use Livewire\Component;
 
 class Service extends Component
 {
-    #[Title('Service')]
+    #[Title('Blog | Service')]
     public function render(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         return view('service');

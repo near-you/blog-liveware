@@ -11,7 +11,7 @@ use Livewire\Component;
 
 class About extends Component
 {
-    #[Title('About')]
+    #[Title('Blog | About')]
     public function render(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         return view('about');
