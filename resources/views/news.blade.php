@@ -17,8 +17,8 @@
                         <li>
                             <div class="list_inner">
                                 <div class="image">
-                                    <img src="img/thumbs/40-25.jpg" alt="" />
-                                    <div class="main" data-img-url="img/news/1.jpg"></div>
+                                    <img src="{{asset('image/thumbs/40-25.jpg')}}" alt="" />
+                                    <div class="main" data-img-url="{{asset('image/news/1.jpg')}}"></div>
                                     <a class="tokyo_tm_full_link" href="#"></a>
                                 </div>
                                 <div class="details">
@@ -56,8 +56,8 @@
                         <li>
                             <div class="list_inner">
                                 <div class="image">
-                                    <img src="img/thumbs/40-25.jpg" alt="" />
-                                    <div class="main" data-img-url="img/news/2.jpg"></div>
+                                    <img src="{{asset('image/thumbs/40-25.jpg')}}" alt="" />
+                                    <div class="main" data-img-url="{{asset('image/news/2.jpg')}}"></div>
                                     <a class="tokyo_tm_full_link" href="#"></a>
                                 </div>
                                 <div class="details">
@@ -95,8 +95,8 @@
                         <li>
                             <div class="list_inner">
                                 <div class="image">
-                                    <img src="img/thumbs/40-25.jpg" alt="" />
-                                    <div class="main" data-img-url="img/news/3.jpg"></div>
+                                    <img src="{{asset('image/thumbs/40-25.jpg')}}" alt="" />
+                                    <div class="main" data-img-url="{{asset('image/news/3.jpg')}}"></div>
                                     <a class="tokyo_tm_full_link" href="#"></a>
                                 </div>
                                 <div class="details">
@@ -134,8 +134,8 @@
                         <li>
                             <div class="list_inner">
                                 <div class="image">
-                                    <img src="img/thumbs/40-25.jpg" alt="" />
-                                    <div class="main" data-img-url="img/news/4.jpg"></div>
+                                    <img src="{{asset('image/thumbs/40-25.jpg')}}" alt="" />
+                                    <div class="main" data-img-url="{{asset('image/news/4.jpg')}}"></div>
                                     <a class="tokyo_tm_full_link" href="#"></a>
                                 </div>
                                 <div class="details">
