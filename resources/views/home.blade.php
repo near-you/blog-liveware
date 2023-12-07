@@ -8,12 +8,11 @@
                     <div class="home_content">
                         <div class="avatar" data-type="square">
                             <!-- data-type values are: "wave", "circle", "square"-->
-                            <div class="image" data-img-url="{{asset('image/portfolio/foto.jpg')}}"></div>
+                            <div class="image" data-img-url="{{ $home->getImage() }}"></div>
                         </div>
                         <div class="details">
-                            <h3 class="name">Andrii <span>Smith</span></h3>
-                            <p class="job">I am a WordPress Developer at
-                                heart and create features that are best suited for the job at hand.</p>
+                            <h3 class="name">{{ $home->name }} <span>{{ $home->surname }}</span></h3>
+                            <p class="job">{{ $home->short_description }}</p>
                             <div class="social">
                                 <ul>
 {{--                                    <li><a href="#"><i class="fa-brands fa-square-facebook"></i></a></li>--}}
@@ -21,12 +20,12 @@
 {{--                                    <li><a href="#"><i class="fa-brands fa-square-behance"></i></a></li>--}}
 {{--                                    <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>--}}
 {{--                                    <li><a href="#"><i class="fa-brands fa-square-instagram"></i></a></li>--}}
+                                    @if($home->facebook_link != null) <li><a href="{{ $home->facebook_link }}"><i class="icon-facebook-squared"></i></a></li> @endif
+                                    @if($home->twitter_link != null) <li><a href="{{ $home->twitter_link }}"><i class="icon-twitter-squared"></i></a></li> @endif
+                                    @if($home->behance_link != null) <li><a href="{{ $home->behance_link }}"><i class="icon-behance-squared"></i></a></li> @endif
+                                    @if($home->linkedin_link != null) <li><a href="{{ $home->linkedin_link }}"><i class="icon-linkedin-squared"></i></a></li> @endif
+                                    @if($home->instagram_link != null) <li><a href="{{ $home->instagram_link }}"><i class="icon-instagram-3"></i></a></li> @endif
 
-                                    <li><a href="#"><i class="icon-facebook-squared"></i></a></li>
-                                    <li><a href="#"><i class="icon-twitter-squared"></i></a></li>
-                                    <li><a href="#"><i class="icon-behance-squared"></i></a></li>
-                                    <li><a href="#"><i class="icon-linkedin-squared"></i></a></li>
-                                    <li><a href="#"><i class="icon-instagram-squared"></i></a></li>
                                 </ul>
                             </div>
                         </div>

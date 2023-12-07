@@ -2,7 +2,7 @@
     <div class="rightpart_in">
 
         <!-- CONTACT -->
-        <div id="contact" class="tokyo_tm_section active">
+        <div id="contact" class="tokyo_tm_section animated">
             <div class="container">
                 <div class="tokyo_tm_contact">
                     <div class="tokyo_tm_title">

@@ -3,13 +3,13 @@
     <div class="leftpart_inner">
         <div class="logo" data-type="text"> <!-- You can use image or text as logo. data-type values are: "image" and "text" -->
             <a href="#">
-{{--                <img src="img/logo/logo.png" alt="" />--}}
+                <img src="{{asset('image/logo/logo.png')}}" alt="" />
                 <h3>TOKYO</h3>
             </a>
         </div>
         <div class="menu">
-            <ul>
-                <li class=""><a href="/" wire:navigate>Home</a></li>
+            <ul class="transition_link">
+                <li><a href="/" wire:navigate>Home</a></li>
                 <li><a href="/about" wire:navigate>About</a></li>
                 <li><a href="/service" wire:navigate>Service</a></li>
                 <li><a href="/portfolio" wire:navigate>Portfolio</a></li>

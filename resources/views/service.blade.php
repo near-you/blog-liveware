@@ -3,7 +3,7 @@
     <div class="rightpart_in">
 
         <!-- SERVICE -->
-        <div id="service" class="tokyo_tm_section active">
+        <div id="service" class="tokyo_tm_section animated">
             <div class="container">
                 <div class="tokyo_tm_services">
                     <div class="tokyo_tm_title">

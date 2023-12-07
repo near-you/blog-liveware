@@ -70,10 +70,11 @@ function tokyo_tm_page_transition(){
 	var wrapper 		= jQuery('.tokyo_tm_all_wrap');
 	var enter	 		= wrapper.data('enter');
 	var exit		 	= wrapper.data('exit');
-	
+
 	button.on('click',function(){
 		var element 	= jQuery(this);
 		var href		= element.attr('href');
+		console.log(href);
 		if(element.parent().hasClass('tokyo_tm_button')){
 			jQuery('.menu .transition_link a[href="'+href+'"]').trigger('click');
 			hashtag();
@@ -93,6 +94,13 @@ function tokyo_tm_page_transition(){
 				jQuery(section).addClass('hidden');
 				jQuery(sectionID).removeClass('hidden').addClass('active');
 			}
+
+		// if(!parent.hasClass('active')) {
+		// 	allLi.removeClass('active');
+		// 	parent.addClass('active');
+		// 	console.log(parent);
+		// }
+		// console.log(parent);
 		return false;
 	});
 }

@@ -2,7 +2,7 @@
     <div class="rightpart_in">
 
         <!-- NEWS -->
-        <div id="news" class="tokyo_tm_section active">
+        <div id="news" class="tokyo_tm_section animated">
             <div class="container">
                 <div class="tokyo_tm_news">
                     <div class="tokyo_tm_title">

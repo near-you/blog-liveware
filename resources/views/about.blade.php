@@ -3,7 +3,7 @@
     <div class="rightpart_in">
 
         <!-- ABOUT -->
-        <div id="about" class="tokyo_tm_section active">
+        <div id="about" class="tokyo_tm_section active animated">
             <div class="container">
                 <div class="tokyo_tm_about">
                     <div class="tokyo_tm_title">
@@ -72,8 +72,11 @@
                                 <h3>Programming Skills</h3>
                             </div>
                             <div class="tokyo_progress">
-                                <div class="progress_inner" data-value="95">
-                                    <span><span class="label">WordPress</span><span class="number">95%</span></span>
+                                <div class="progress_inner" data-value="30">
+                                    <span>
+                                        <span class="label">WordPress</span>
+                                        <span class="number">30%</span>
+                                    </span>
                                     <div class="background">
                                         <div class="bar">
                                             <div class="bar_in"></div>
