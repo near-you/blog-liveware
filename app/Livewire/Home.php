@@ -2,12 +2,13 @@
 
 namespace App\Livewire;
 
+use App\Models\Home\Home as HomeModel;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Livewire\Attributes\Title;
 use Livewire\Component;
-use App\Models\Home as HomeModel;
+
 class Home extends Component
 {
 

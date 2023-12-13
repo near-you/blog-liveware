@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\About;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('skill_titles', function (Blueprint $table) {
             $table->id();
-            $table->string('skill_title')->nullable();
-            $table->foreignIdFor(About::class);
+            $table->string('skill_title');
+            $table->foreignId('about_id')->constrained('abouts')->cascadeOnDelete();
             $table->timestamps();
         });
     }

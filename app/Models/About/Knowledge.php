@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\About;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Knowledge extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['knowledge_name'];
 }

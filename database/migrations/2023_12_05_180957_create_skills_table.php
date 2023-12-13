@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\SkillTitle;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('skill_name')->nullable();
             $table->string('skill_percent')->nullable();
-            $table->foreignIdFor(SkillTitle::class, 'skill_title_id');
+            $table->foreignId('skill_title_id')->constrained('skill_titles')->cascadeOnDelete();
             $table->timestamps();
         });
     }

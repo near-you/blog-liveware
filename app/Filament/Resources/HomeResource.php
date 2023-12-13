@@ -4,22 +4,32 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\HomeResource\Pages;
 use App\Filament\Resources\HomeResource\RelationManagers;
-use App\Models\Home;
+use App\Models\Home\Home;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class HomeResource extends Resource
 {
     protected static ?string $model = Home::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+//    protected static ?string $navigationGroup = 'About page';
+//
+//    protected static ?int $navigationSort = 2;
+//
+//    protected static ?string $navigationLabel = 'Main Information';
+//
+//    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+//
+//    protected static ?string $activeNavigationIcon = 'heroicon-o-document-text';
 
-    protected static ?string $navigationGroup = 'Profile Settings';
+    protected static ?string $navigationGroup = 'Home page';
+
+    protected static ?string $navigationLabel = 'Home';
+
+    protected static ?string $navigationIcon = 'heroicon-o-user';
 
     public static function form(Form $form): Form
     {
@@ -39,7 +49,7 @@ class HomeResource extends Resource
                 Forms\Components\TextInput::make('facebook_link')
                     ->maxLength(255)
                     ->name('Facebook Link')
-                ->default('Facebook'),
+                    ->default('Facebook'),
                 Forms\Components\TextInput::make('twitter_link')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('behance_link')
@@ -56,23 +66,25 @@ class HomeResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable()
-                    ->name('Name'),
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('surname')
-                    ->searchable()
-                    ->name('Surname'),
+                    ->searchable(),
                 Tables\Columns\ImageColumn::make('image'),
                 Tables\Columns\TextColumn::make('facebook_link')
                     ->searchable()
-                    ->name('Facebook Link'),
+                    ->label('Facebook'),
                 Tables\Columns\TextColumn::make('twitter_link')
-                    ->searchable(),
+                    ->searchable()
+                    ->label('Twitter'),
                 Tables\Columns\TextColumn::make('behance_link')
-                    ->searchable(),
+                    ->searchable()
+                    ->label('Behance'),
                 Tables\Columns\TextColumn::make('linkedin_link')
-                    ->searchable(),
+                    ->searchable()
+                    ->label('LinkedIn'),
                 Tables\Columns\TextColumn::make('instagram_link')
-                    ->searchable(),
+                    ->searchable()
+                    ->label('Instagram'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

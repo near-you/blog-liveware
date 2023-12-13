@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('abouts', function (Blueprint $table) {
             $table->id();
             $table->string('my_profession', 250)->nullable();
+            $table->string('image')->nullable();
             $table->text('description')->nullable();
-            $table->date('birthday')->nullable();
+            $table->dateTime('date_of_birth')->nullable();
+            $table->string('age')->nullable();
             $table->string('address')->nullable();
             $table->string('email')->nullable();
             $table->string('phone')->nullable();

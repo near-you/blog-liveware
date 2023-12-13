@@ -19,40 +19,34 @@
                              alt="Some picture"/>
                     </div>
                     <div class="about_title">
-                        <h3>Adriano Smith</h3>
-                        <span>Web Developer</span>
+                        <h3>{{ $home->name }} {{ $home->surname }}</h3>
+                        <span>{{ $about->my_profession }}</span>
                     </div>
                     <div class="about_text">
-                        <p>Hi, my name is Adriano Smith and I began using WordPress when it first began. I’ve spent most
-                            of my waking hours for the last ten years designing, programming and operating WordPress
-                            sites.</p>
-                        <p>One of my specialties is taking an idea from scratch and creating a full-fledged platform. I
-                            go beyond to produce sites with a unique, outstanding, contemporary look-and-feel. With
-                            extensive knowledge of web mechanics, I’m able to optimize complex integrations to require
-                            little-to-no maintenance while running on their own for years.</p>
+                        {{ $about->description }}
                     </div>
                     <div class="tokyo_tm_short_info">
                         <div class="left">
                             <div class="tokyo_tm_info">
                                 <ul>
-                                    <li><span>Birthday:</span><span>01.07.1990</span></li>
-                                    <li><span>Age:</span><span>32</span></li>
-                                    <li><span>Address:</span><span>Ave 11, New York, USA</span></li>
+                                    <li><span>Birthday:</span><span>{{ $birthday }}</span></li>
+                                    <li><span>Age:</span><span>{{ $about->age }}</span></li>
+                                    <li><span>Address:</span><span>{{ $about->address }}</span></li>
                                     <li><span>Email:</span><span><a
-                                                    href="mailto:tokyo@gmail.com">tokyo@gmail.com</a></span></li>
+                                                    href="mailto:tokyo@gmail.com">{{ $about->email }}</a></span></li>
                                     <li><span>Phone:</span><span><a
-                                                    href="tel:+77 022 177 05 05">+77 022 177 05 05</a></span></li>
+                                                    href="tel:+77 022 177 05 05">{{ $about->phone }}</a></span></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="right">
                             <div class="tokyo_tm_info">
                                 <ul>
-                                    <li><span>Nationality:</span><span>USA</span></li>
-                                    <li><span>Study:</span><span>Univercity of Texas</span></li>
-                                    <li><span>Degree:</span><span>Master</span></li>
-                                    <li><span>Interest:</span><span>Playing Football</span></li>
-                                    <li><span>Freelance:</span><span>Available</span></li>
+                                    <li><span>Nationality:</span><span>{{ $about->nationality }}</span></li>
+                                    <li><span>Study:</span><span>{{ $about->study }}</span></li>
+                                    <li><span>Degree:</span><span>{{ $about->degree }}</span></li>
+                                    <li><span>Interest:</span><span>{{ $about->interest }}</span></li>
+                                    <li><span>Freelance:</span><span>{{ $about->freelance }}</span></li>
                                 </ul>
                             </div>
                         </div>

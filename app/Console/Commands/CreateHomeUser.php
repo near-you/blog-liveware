@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Home;
+use App\Models\Home\Home;
 use Illuminate\Console\Command;
 
 class CreateHomeUser extends Command

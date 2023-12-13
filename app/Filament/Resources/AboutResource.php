@@ -4,17 +4,12 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\AboutResource\Pages;
 use App\Filament\Resources\AboutResource\RelationManagers;
-use App\Models\About;
-use Filament\Forms\Components\Actions\Action;
+use App\Models\About\About;
 use Filament\Forms;
-use Filament\Forms\Components\Fieldset;
-use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class AboutResource extends Resource
 {
@@ -28,16 +23,38 @@ class AboutResource extends Resource
             ->schema([
                 Forms\Components\Section::make()
                     ->schema([
+                        Forms\Components\TextInput::make('my_profession')
+                            ->label('Profession')
+                            ->required()
+                            ->maxLength(250),
+                        Forms\Components\FileUpload::make('image')
+                            ->image(),
+                    ])->columnSpan(5),
+
+                Forms\Components\Section::make()
+                    ->schema([
+                        Forms\Components\Textarea::make('description')
+                            ->maxLength(65535)
+                            ->columnSpanFull()
+                            ->rows(6),
+                    ])->columnSpan(7),
+
+                Forms\Components\Section::make()
+                    ->schema([
                         Forms\Components\Grid::make(2)
                             ->schema([
-                                Forms\Components\TextInput::make('my_profession')
-                                    ->maxLength(250),
+                                Forms\Components\DatePicker::make('date_of_birth')
+                                    ->label('Birthday')
+                                    ->native(false)
+                                    ->minDate(now()->subYears(90))
+                                    ->maxDate(now()),
+                                Forms\Components\TextInput::make('age')
+                                    ->integer()
+                                    ->maxLength(3),
+                                Forms\Components\TextInput::make('address')
+                                    ->maxLength(255),
                                 Forms\Components\TextInput::make('email')
                                     ->email()
-                                    ->maxLength(255),
-                                Forms\Components\DatePicker::make('birthday'),
-//                                    ->format('d-m-Y'),
-                                Forms\Components\TextInput::make('address')
                                     ->maxLength(255),
                                 Forms\Components\TextInput::make('phone')
                                     ->tel()
@@ -52,19 +69,11 @@ class AboutResource extends Resource
                                     ->maxLength(255),
                                 Forms\Components\TextInput::make('freelance')
                                     ->maxLength(255),
-                                Forms\Components\TextInput::make('skill_name')
-                            ]),
-                        Forms\Components\Textarea::make('description')
-                            ->maxLength(65535)
-                            ->columnSpanFull(),
+                            ])
+//                    ->columns(3)
+//                    ->columnSpan(['lg' => fn(?About $record) => $record === null ? 3 : 2]),
                     ]),
 
-//                Fieldset::make('Skill Title')
-//                    ->relationship('skill')
-//                    ->schema([
-//                        Forms\Components\TextInput::make('skill_title')
-//                            ->maxLength(255),
-//                    ])
             ])->columns(12);
     }
 
@@ -73,7 +82,9 @@ class AboutResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('my_profession')
+                    ->label('Profession')
                     ->searchable(),
+                Tables\Columns\ImageColumn::make('image'),
                 Tables\Columns\TextColumn::make('birthday')
                     ->date()
                     ->sortable(),
@@ -113,13 +124,16 @@ class AboutResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
-
     }
 
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\KnowledgeRelationManager::class,
+            RelationManagers\InterestRelationManager::class,
+            RelationManagers\EducationRelationManager::class,
+            RelationManagers\ExperienceRelationManager::class,
+            //RelationManagers\SkillTitleRelationManager::class,
         ];
     }
 
@@ -131,4 +145,14 @@ class AboutResource extends Resource
             'edit' => Pages\EditAbout::route('/{record}/edit'),
         ];
     }
+
+//    public static function getRecordSubNavigation(Page $page): array
+//    {
+//        return $page->generateNavigationItems([
+//            Pages\ManageSkillTitle::class,
+//            Pages\EditSkill::class,
+//        ]);
+//    }
+
+
 }

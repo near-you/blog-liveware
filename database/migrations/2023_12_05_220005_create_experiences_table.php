@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\About;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,7 +17,7 @@ return new class extends Migration
             $table->string('experience_profession')->nullable();
             $table->string('education_year_start', 10)->nullable();
             $table->string('education_year_finish', 10)->nullable();
-            $table->foreignIdFor(About::class, 'about_id')->nullable();
+            $table->foreignId('about_id')->constrained('abouts')->cascadeOnDelete();
             $table->timestamps();
         });
     }
