@@ -19,6 +19,19 @@ class ExperienceRelationManager extends RelationManager
         return $form
             ->schema([
                 Forms\Components\TextInput::make('experience_company')
+                    ->label(__('Company'))
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('experience_profession')
+                    ->label(__('Profession'))
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('experience_year_start')
+                    ->label(__('Year Start'))
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('experience_year_finish')
+                    ->label(__('Year Finish'))
                     ->required()
                     ->maxLength(255),
             ]);
@@ -29,7 +42,14 @@ class ExperienceRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('experience_company')
             ->columns([
-                Tables\Columns\TextColumn::make('experience_company'),
+                Tables\Columns\TextColumn::make('experience_company')
+                    ->label(__('Company')),
+                Tables\Columns\TextColumn::make('experience_profession')
+                    ->label(__('Profession')),
+                Tables\Columns\TextColumn::make('experience_year_start')
+                    ->label(__('Year Start')),
+                Tables\Columns\TextColumn::make('experience_year_finish')
+                    ->label(__('Year Finish')),
             ])
             ->filters([
                 //

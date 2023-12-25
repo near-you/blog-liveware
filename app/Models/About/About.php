@@ -4,8 +4,11 @@ namespace App\Models\About;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 
 class About extends Model
 {
@@ -27,9 +30,9 @@ class About extends Model
         'freelance',
     ];
 
-    public function skillTitle(): HasMany
+    public function skillTitle(): HasOne
     {
-        return $this->hasMany(SkillTitle::class);
+        return $this->hasOne(SkillTitle::class);
     }
 
     public function knowledge(): HasMany
@@ -52,8 +55,17 @@ class About extends Model
         return $this->hasMany(Experience::class);
     }
 
-    public function skill(): HasManyThrough
+    public function skill(): HasOneThrough
     {
-        return $this->hasManyThrough(Skill::class, SkillTitle::class);
+        return $this->hasOneThrough(Skill::class, SkillTitle::class);
+    }
+
+    public function getImage()
+    {
+        if (str_starts_with($this->image, 'http')) {
+            return $this->image;
+        }
+
+        return '/storage/'.$this->image;
     }
 }

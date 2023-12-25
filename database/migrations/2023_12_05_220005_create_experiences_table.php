@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('experience_company')->nullable();
             $table->string('experience_profession')->nullable();
-            $table->string('education_year_start', 10)->nullable();
-            $table->string('education_year_finish', 10)->nullable();
+            $table->string('experience_year_start', 10)->nullable();
+            $table->string('experience_year_finish', 10)->nullable();
             $table->foreignId('about_id')->constrained('abouts')->cascadeOnDelete();
             $table->timestamps();
         });

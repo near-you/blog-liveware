@@ -17,9 +17,4 @@ class SkillTitle extends Model
     {
         return $this->hasMany(Skill::class);
     }
-
-    public function about(): BelongsTo
-    {
-        return $this->belongsTo(About::class);
-    }
 }

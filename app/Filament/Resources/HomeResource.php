@@ -15,16 +15,6 @@ class HomeResource extends Resource
 {
     protected static ?string $model = Home::class;
 
-//    protected static ?string $navigationGroup = 'About page';
-//
-//    protected static ?int $navigationSort = 2;
-//
-//    protected static ?string $navigationLabel = 'Main Information';
-//
-//    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-//
-//    protected static ?string $activeNavigationIcon = 'heroicon-o-document-text';
-
     protected static ?string $navigationGroup = 'Home page';
 
     protected static ?string $navigationLabel = 'Home';
@@ -45,7 +35,14 @@ class HomeResource extends Resource
                     ->maxLength(2048)
                     ->columnSpanFull(),
                 Forms\Components\FileUpload::make('image')
-                    ->image(),
+                    ->image()
+                    ->imageEditor()
+                    ->imageEditorAspectRatios([
+                        null,
+                        '16:9',
+                        '4:3',
+                        '1:1',
+                    ]),
                 Forms\Components\TextInput::make('facebook_link')
                     ->maxLength(255)
                     ->name('Facebook Link')

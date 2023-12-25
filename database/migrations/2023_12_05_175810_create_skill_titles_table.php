@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('skill_titles', function (Blueprint $table) {
             $table->id();
             $table->string('skill_title');
-            $table->foreignId('about_id')->constrained('abouts')->cascadeOnDelete();
+//            $table->foreignId('about_id')->constrained('abouts')->cascadeOnDelete();
             $table->timestamps();
         });
     }

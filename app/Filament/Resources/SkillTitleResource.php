@@ -15,7 +15,15 @@ class SkillTitleResource extends Resource
 {
     protected static ?string $model = SkillTitle::class;
 
+    protected static ?string $navigationGroup = 'About page';
+
+    protected static ?int $navigationSort = 3;
+
+    protected static ?string $navigationLabel = 'Skill';
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    protected static ?string $activeNavigationIcon = 'heroicon-o-document-text';
 
     public static function form(Form $form): Form
     {
@@ -32,7 +40,14 @@ class SkillTitleResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('skill_title')
+                    ->label(__('Skill Title'))
                     ->searchable(),
+                Tables\Columns\TextColumn::make('skill.skill_name')
+                    ->label(__('Skill'))
+                    ->searchable(),
+//                Tables\Columns\TextColumn::make('skill.skill_percent')
+//                    ->label(__('Percent'))
+//                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -47,12 +62,12 @@ class SkillTitleResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
             ]);
+//            ->bulkActions([
+//                Tables\Actions\BulkActionGroup::make([
+//                    Tables\Actions\DeleteBulkAction::make(),
+//                ]),
+//            ]);
     }
 
     public static function getRelations(): array

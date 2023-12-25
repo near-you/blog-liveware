@@ -12,7 +12,7 @@ class Experience extends Model
     protected $fillable = [
         'experience_company',
         'experience_profession',
-        'education_year_start',
-        'education_year_finish',
+        'experience_year_start',
+        'experience_year_finish',
     ];
 }

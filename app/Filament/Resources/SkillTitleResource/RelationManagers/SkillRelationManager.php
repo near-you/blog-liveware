@@ -19,11 +19,11 @@ class SkillRelationManager extends RelationManager
         return $form
             ->schema([
                 Forms\Components\TextInput::make('skill_name')
-                    ->label('Skill')
+                    ->label(__('Skill'))
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('skill_percent')
-                    ->label('Skill Percent')
+                    ->label(__('Skill Percent'))
                     ->suffix('%')
                     ->required()
                     ->integer()
@@ -36,7 +36,10 @@ class SkillRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('skill_name')
             ->columns([
-                Tables\Columns\TextColumn::make('skill_name'),
+                Tables\Columns\TextColumn::make('skill_name')
+                ->label(__('Skill')),
+                Tables\Columns\TextColumn::make('skill_percent')
+                ->label(__('Percent')),
             ])
             ->filters([
                 //
