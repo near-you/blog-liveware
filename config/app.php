@@ -140,8 +140,8 @@ return [
     */
 
     'maintenance' => [
-        'driver' => 'file',
-        // 'store' => 'redis',
+//        'driver' => 'file',
+        'store' => 'redis',
     ],
 
     /*
@@ -169,6 +169,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\Filament\AdminPanelProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
     ])->toArray(),
 
     /*
