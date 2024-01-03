@@ -7,8 +7,6 @@ use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class KnowledgeRelationManager extends RelationManager
 {
@@ -18,7 +16,7 @@ class KnowledgeRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('knowledge_name')
+                Forms\Components\TextInput::make('title')
                     ->required()
                     ->maxLength(255),
             ]);
@@ -27,9 +25,9 @@ class KnowledgeRelationManager extends RelationManager
     public function table(Table $table): Table
     {
         return $table
-            ->recordTitleAttribute('knowledge_name')
+            ->recordTitleAttribute('title')
             ->columns([
-                Tables\Columns\TextColumn::make('knowledge_name'),
+                Tables\Columns\TextColumn::make('title'),
             ])
             ->filters([
                 //

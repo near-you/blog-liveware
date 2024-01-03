@@ -9,5 +9,5 @@ class Knowledge extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['knowledge_name'];
+    protected $fillable = ['title'];
 }

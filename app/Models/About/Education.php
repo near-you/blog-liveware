@@ -10,9 +10,9 @@ class Education extends Model
     use HasFactory;
 
     protected $fillable = [
-        'education_institution_name',
-        'education_degree',
-        'education_year_start',
-        'education_year_finish',
+        'institution_name',
+        'degree',
+        'year_start',
+        'year_finish',
     ];
 }

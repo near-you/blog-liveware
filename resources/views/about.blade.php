@@ -18,7 +18,7 @@
                         <img src="{{ $about->getImage() }}" alt="About pictures"/>
                     </div>
                     <div class="about_title">
-                        <h3>{{ $home->name }} {{ $home->surname }}</h3>
+                        <h3>{{ $home->name ?? '' }} {{ $home->surname ?? '' }}</h3>
                         <span>{{ $about->my_profession }}</span>
                     </div>
                     <div class="about_text">
@@ -28,11 +28,13 @@
                         <div class="left">
                             <div class="tokyo_tm_info">
                                 <ul>
-                                    @if( $birthday ) <li><span>Birthday:</span><span>{{ $birthday }}</span></li> @endif
-                                    @if( $about->age ) <li><span>Age:</span><span>{{ $about->age }}</span></li> @endif
+                                    @if( $birthday )
+                                        <li><span>Birthday:</span><span>{{ $birthday }}</span></li>
+                                        <li><span>Age:</span><span>{{ \Carbon\Carbon::now()->diffInYears($birthday) }}</span></li>
+                                    @endif
                                     @if( $about->address ) <li><span>Address:</span><span>{{ $about->address }}</span></li> @endif
                                     @if( $about->email ) <li><span>Email:</span><span><a
-                                                        href="mailto:tokyo@gmail.com">{{ $about->email }}</a></span></li> @endif
+                                                        href="mailto:{{ $about->email }}">{{ $about->email }}</a></span></li> @endif
                                     @if( $about->phone ) <li><span>Phone:</span><span><a
                                                         href="tel:{{ $about->phone }}">{{ $about->phone }}</a></span></li> @endif
                                 </ul>
@@ -62,14 +64,14 @@
                     <div class="in">
                         <div class="left">
                             <div class="tokyo_section_title">
-                                <h3>{{ $skillTitleLeft->skill_title }}</h3>
+                                <h3>{{ $skillTitleLeft->title }}</h3>
                             </div>
                             <div class="tokyo_progress">
                                 @foreach( $skillLeft as $skill )
-                                <div class="progress_inner" data-value="{{ $skill->skill_percent }}">
+                                <div class="progress_inner" data-value="{{ $skill->percent }}">
                                     <span>
-                                        <span class="label">{{ $skill->skill_name }}</span>
-                                        <span class="number">{{ $skill->skill_percent }}%</span>
+                                        <span class="label">{{ $skill->title }}</span>
+                                        <span class="number">{{ $skill->percent }}%</span>
                                     </span>
                                     <div class="background">
                                         <div class="bar">
@@ -82,14 +84,14 @@
                         </div>
                         <div class="right">
                             <div class="tokyo_section_title">
-                                <h3>{{ $skillTitleRight->skill_title }}</h3>
+                                <h3>{{ $skillTitleRight->title }}</h3>
                             </div>
                             <div class="tokyo_progress">
                                 @foreach( $skillRight as $skill )
-                                <div class="progress_inner" data-value="{{ $skill->skill_percent }}">
+                                <div class="progress_inner" data-value="{{ $skill->percent }}">
                                     <span>
-                                        <span class="label">{{ $skill->skill_name }}</span>
-                                        <span class="number">{{ $skill->skill_percent }}%</span>
+                                        <span class="label">{{ $skill->title }}</span>
+                                        <span class="number">{{ $skill->percent }}%</span>
                                     </span>
                                     <div class="background">
                                         <div class="bar">
@@ -114,7 +116,7 @@
                                 <ul>
                                     @foreach($knowledge as $know)
                                         <li>
-                                            <span><img class="svg" src="{{asset('image/svg/rightarrow.svg')}}" alt=""/>{{ $know->knowledge_name }}</span>
+                                            <span><img class="svg" src="{{asset('image/svg/rightarrow.svg')}}" alt=""/>{{ $know->title }}</span>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -128,7 +130,7 @@
                                 <ul>
                                     @foreach($interests as $interest)
                                         <li>
-                                            <span><img class="svg" src="{{asset('image/svg/rightarrow.svg')}}" alt=""/>{{ $interest->interest_title }}</span>
+                                            <span><img class="svg" src="{{asset('image/svg/rightarrow.svg')}}" alt=""/>{{ $interest->title }}</span>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -150,11 +152,11 @@
                                     <li>
                                         <div class="list_inner">
                                             <div class="time">
-                                                <span>{{ $education->education_year_start }} - {{ $education->education_year_finish }}</span>
+                                                <span>{{ $education->year_start }} - {{ $education->year_finish }}</span>
                                             </div>
                                             <div class="place">
-                                                <h3>{{ $education->education_institution_name }}</h3>
-                                                <span>{{ $education->education_degree }}</span>
+                                                <h3>{{ $education->institution_name }}</h3>
+                                                <span>{{ $education->degree }}</span>
                                             </div>
                                         </div>
                                     </li>
@@ -172,11 +174,11 @@
                                     <li>
                                         <div class="list_inner">
                                             <div class="time">
-                                                <span>{{ $experience->experience_year_start }} - {{ $experience->experience_year_finish }}</span>
+                                                <span>{{ $experience->year_start }} - {{ $experience->year_finish }}</span>
                                             </div>
                                             <div class="place">
-                                                <h3>{{ $experience->experience_company }}</h3>
-                                                <span>{{ $experience->experience_profession }}</span>
+                                                <h3>{{ $experience->company }}</h3>
+                                                <span>{{ $experience->profession }}</span>
                                             </div>
                                         </div>
                                     </li>

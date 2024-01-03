@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('knowledge', function (Blueprint $table) {
             $table->id();
-            $table->string('knowledge_name')->nullable();
+            $table->string('title')->nullable();
             $table->foreignId('about_id')->constrained('abouts')->cascadeOnDelete();
             $table->timestamps();
         });

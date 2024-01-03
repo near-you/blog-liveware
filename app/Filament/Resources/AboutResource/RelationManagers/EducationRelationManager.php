@@ -7,8 +7,6 @@ use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class EducationRelationManager extends RelationManager
 {
@@ -18,19 +16,22 @@ class EducationRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('education_institution_name')
+                Forms\Components\TextInput::make('institution_name')
                     ->required()
                     ->label(__('Education Institution'))
                     ->maxLength(255),
-                Forms\Components\TextInput::make('education_degree')
+
+                Forms\Components\TextInput::make('degree')
                     ->required()
                     ->label(__('Degree'))
                     ->maxLength(255),
-                Forms\Components\TextInput::make('education_year_start')
+
+                Forms\Components\TextInput::make('year_start')
                     ->required()
                     ->label(__('Year Start'))
                     ->maxLength(255),
-                Forms\Components\TextInput::make('education_year_finish')
+
+                Forms\Components\TextInput::make('year_finish')
                     ->required()
                     ->label(__('Year Finish'))
                     ->maxLength(255),
@@ -40,15 +41,18 @@ class EducationRelationManager extends RelationManager
     public function table(Table $table): Table
     {
         return $table
-            ->recordTitleAttribute('education_institution_name')
+            ->recordTitleAttribute('institution_name')
             ->columns([
-                Tables\Columns\TextColumn::make('education_institution_name')
+                Tables\Columns\TextColumn::make('institution_name')
                     ->label(__('Education Institution')),
-                Tables\Columns\TextColumn::make('education_degree')
+
+                Tables\Columns\TextColumn::make('degree')
                     ->label(__('Degree')),
-                Tables\Columns\TextColumn::make('education_year_start')
+
+                Tables\Columns\TextColumn::make('year_start')
                     ->label(__('Year Start')),
-                Tables\Columns\TextColumn::make('education_year_finish')
+                    
+                Tables\Columns\TextColumn::make('year_finish')
                     ->label(__('Year Finish')),
             ])
             ->filters([

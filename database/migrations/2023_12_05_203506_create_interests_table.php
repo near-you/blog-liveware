@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('interests', function (Blueprint $table) {
             $table->id();
-            $table->string('interest_title')->nullable();
+            $table->string('title')->nullable();
             $table->foreignId('about_id')->constrained('abouts')->cascadeOnDelete();
             $table->timestamps();
         });

@@ -7,8 +7,6 @@ use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class SkillRelationManager extends RelationManager
 {
@@ -18,12 +16,13 @@ class SkillRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('skill_name')
+                Forms\Components\TextInput::make('title')
                     ->label(__('Skill'))
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('skill_percent')
-                    ->label(__('Skill Percent'))
+
+                Forms\Components\TextInput::make('percent')
+                    ->label(__('Percent'))
                     ->suffix('%')
                     ->required()
                     ->integer()
@@ -34,11 +33,12 @@ class SkillRelationManager extends RelationManager
     public function table(Table $table): Table
     {
         return $table
-            ->recordTitleAttribute('skill_name')
+            ->recordTitleAttribute('title')
             ->columns([
-                Tables\Columns\TextColumn::make('skill_name')
+                Tables\Columns\TextColumn::make('title')
                 ->label(__('Skill')),
-                Tables\Columns\TextColumn::make('skill_percent')
+
+                Tables\Columns\TextColumn::make('percent')
                 ->label(__('Percent')),
             ])
             ->filters([

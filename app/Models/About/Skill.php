@@ -10,7 +10,10 @@ class Skill extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['skill_name', 'skill_percent'];
+    protected $fillable = [
+        'title',
+        'percent',
+    ];
 
     public function skillTitle(): BelongsTo
     {

@@ -10,9 +10,9 @@ class Experience extends Model
     use HasFactory;
 
     protected $fillable = [
-        'experience_company',
-        'experience_profession',
-        'experience_year_start',
-        'experience_year_finish',
+        'company',
+        'profession',
+        'year_start',
+        'year_finish',
     ];
 }

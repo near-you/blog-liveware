@@ -29,12 +29,15 @@ class HomeResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(120),
+
                 Forms\Components\TextInput::make('surname')
                     ->required()
                     ->maxLength(120),
+
                 Forms\Components\Textarea::make('short_description')
                     ->maxLength(2048)
                     ->columnSpanFull(),
+
                 Forms\Components\FileUpload::make('image')
                     ->image()
                     ->imageEditor()
@@ -44,6 +47,7 @@ class HomeResource extends Resource
                         '4:3',
                         '1:1',
                     ]),
+
                 Forms\Components\TextInput::make('facebook_link')
                     ->maxLength(255)
                     ->name('Facebook Link')

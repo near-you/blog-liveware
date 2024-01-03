@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('homes', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 200);
-            $table->string('surname', 200);
+            $table->string('name');
+            $table->string('surname');
             $table->text('short_description')->nullable();
             $table->string('image')->nullable();
-            $table->string('facebook_link')->nullable();
-            $table->string('twitter_link')->nullable();
-            $table->string('behance_link')->nullable();
-            $table->string('linkedin_link')->nullable();
-            $table->string('instagram_link')->nullable();
+            $table->string('facebook_link')->nullable()->default('#');
+            $table->string('twitter_link')->nullable()->default('#');
+            $table->string('behance_link')->nullable()->default('#');
+            $table->string('linkedin_link')->nullable()->default('#');
+            $table->string('instagram_link')->nullable()->default('#');
             $table->timestamps();
         });
     }

@@ -15,7 +15,7 @@ class About extends Model
     use HasFactory;
 
     protected $fillable = [
-        'my_profession',
+        'profession',
         'image',
         'description',
         'date_of_birth',
@@ -30,10 +30,10 @@ class About extends Model
         'freelance',
     ];
 
-    public function skillTitle(): HasOne
-    {
-        return $this->hasOne(SkillTitle::class);
-    }
+    // public function skillTitle(): HasOne
+    // {
+    //     return $this->hasOne(SkillTitle::class);
+    // }
 
     public function knowledge(): HasMany
     {

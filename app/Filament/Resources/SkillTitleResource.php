@@ -29,7 +29,8 @@ class SkillTitleResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('skill_title')
+                Forms\Components\TextInput::make('title')
+                    ->label(__('Skill Title'))
                     ->required()
                     ->maxLength(255),
             ]);
@@ -39,19 +40,23 @@ class SkillTitleResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('skill_title')
+                Tables\Columns\TextColumn::make('title')
                     ->label(__('Skill Title'))
                     ->searchable(),
-                Tables\Columns\TextColumn::make('skill.skill_name')
+
+                Tables\Columns\TextColumn::make('skill.title')
                     ->label(__('Skill'))
                     ->searchable(),
+
 //                Tables\Columns\TextColumn::make('skill.skill_percent')
 //                    ->label(__('Percent'))
 //                    ->searchable(),
+
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
@@ -63,11 +68,6 @@ class SkillTitleResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
             ]);
-//            ->bulkActions([
-//                Tables\Actions\BulkActionGroup::make([
-//                    Tables\Actions\DeleteBulkAction::make(),
-//                ]),
-//            ]);
     }
 
     public static function getRelations(): array
@@ -81,7 +81,7 @@ class SkillTitleResource extends Resource
     {
         return [
             'index' => Pages\ListSkillTitles::route('/'),
-            'create' => Pages\CreateSkillTitle::route('/create'),
+            'create' =>  Pages\CreateSkillTitle::route('/create'),
             'edit' => Pages\EditSkillTitle::route('/{record}/edit'),
         ];
     }

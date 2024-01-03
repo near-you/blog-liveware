@@ -19,9 +19,9 @@
 
     <title>{{ $title ?? 'Page Title' }}</title>
 
-    <link rel="stylesheet" type="text/css" href="{{asset('css/plugins.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{asset('css/dark.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/plugins.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/dark.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}"/>
 
 {{--    <script src="https://kit.fontawesome.com/62c2b4b04a.js" crossorigin="anonymous"></script>--}}
 
@@ -54,10 +54,10 @@
 <!-- / WRAPPER ALL -->
 
 <!-- SCRIPTS -->
-<script src="{{asset('js/template/jquery.js')}}"></script>
+<script src="{{ asset('js/template/jquery.js') }}"></script>
 <!--[if lt IE 10]><script type="text/javascript" src="{{asset('template/js/ie8.js')}}"></script><![endif]-->
-<script src="{{asset('js/template/plugins.js')}}"></script>
-<script src="{{asset('js/template/init.js')}}"></script>
+<script src="{{ asset('js/template/plugins.js') }}"></script>
+<script src="{{ asset('js/template/init.js') }}"></script>
 <!-- /SCRIPTS -->
 </body>
 </html>

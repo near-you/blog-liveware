@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('experiences', function (Blueprint $table) {
             $table->id();
-            $table->string('experience_company')->nullable();
-            $table->string('experience_profession')->nullable();
-            $table->string('experience_year_start', 10)->nullable();
-            $table->string('experience_year_finish', 10)->nullable();
+            $table->string('company')->nullable();
+            $table->string('profession')->nullable();
+            $table->string('year_start', 10)->nullable();
+            $table->string('year_finish', 10)->nullable();
             $table->foreignId('about_id')->constrained('abouts')->cascadeOnDelete();
             $table->timestamps();
         });

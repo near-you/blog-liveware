@@ -11,7 +11,7 @@ class SkillTitle extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['skill_title'];
+    protected $fillable = ['title'];
 
     public function skill(): HasMany
     {
