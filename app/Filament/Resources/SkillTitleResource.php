@@ -15,15 +15,15 @@ class SkillTitleResource extends Resource
 {
     protected static ?string $model = SkillTitle::class;
 
-    protected static ?string $navigationGroup = 'About page';
+    protected static ?string $navigationGroup = 'Profile Management';
 
     protected static ?int $navigationSort = 3;
 
     protected static ?string $navigationLabel = 'Skill';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-arrow-up-on-square-stack';
 
-    protected static ?string $activeNavigationIcon = 'heroicon-o-document-text';
+    // protected static ?string $activeNavigationIcon = 'heroicon-o-document-text';
 
     public static function form(Form $form): Form
     {

@@ -16,7 +16,9 @@ class HomeResource extends Resource
 {
     protected static ?string $model = Home::class;
 
-    protected static ?string $navigationGroup = 'Home page';
+    protected static ?string $navigationGroup = 'Profile Management';
+
+    protected static ?int $navigationSort = 1;
 
     protected static ?string $navigationLabel = 'Home';
 
@@ -68,30 +70,34 @@ class HomeResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->label(__('Name'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('surname')
+                    ->label(__('Surname'))
                     ->searchable(),
                 Tables\Columns\ImageColumn::make('image'),
-                Tables\Columns\TextColumn::make('facebook_link')
-                    ->searchable()
-                    ->label('Facebook'),
-                Tables\Columns\TextColumn::make('twitter_link')
-                    ->searchable()
-                    ->label('Twitter'),
-                Tables\Columns\TextColumn::make('behance_link')
-                    ->searchable()
-                    ->label('Behance'),
-                Tables\Columns\TextColumn::make('linkedin_link')
-                    ->searchable()
-                    ->label('LinkedIn'),
-                Tables\Columns\TextColumn::make('instagram_link')
-                    ->searchable()
-                    ->label('Instagram'),
+                // Tables\Columns\TextColumn::make('facebook_link')
+                //     ->searchable()
+                //     ->label('Facebook'),
+                // Tables\Columns\TextColumn::make('twitter_link')
+                //     ->searchable()
+                //     ->label('Twitter'),
+                // Tables\Columns\TextColumn::make('behance_link')
+                //     ->searchable()
+                //     ->label('Behance'),
+                // Tables\Columns\TextColumn::make('linkedin_link')
+                //     ->searchable()
+                //     ->label('LinkedIn'),
+                // Tables\Columns\TextColumn::make('instagram_link')
+                //     ->searchable()
+                //     ->label('Instagram'),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label(__('Created'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label(__('Updated'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

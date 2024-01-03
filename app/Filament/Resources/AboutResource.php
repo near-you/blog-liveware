@@ -6,10 +6,7 @@ use App\Filament\Resources\AboutResource\Pages;
 use App\Filament\Resources\AboutResource\RelationManagers;
 use App\Models\About\About;
 use Filament\Forms;
-use Filament\Forms\Components\Grid;
 use Filament\Forms\Form;
-use Filament\Infolists;
-use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -18,15 +15,15 @@ class AboutResource extends Resource
 {
     protected static ?string $model = About::class;
 
-    protected static ?string $navigationGroup = 'About page';
+    protected static ?string $navigationGroup = 'Profile Management';
 
     protected static ?int $navigationSort = 2;
 
-    protected static ?string $navigationLabel = 'Main Info';
+    protected static ?string $navigationLabel = 'About';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-identification';
 
-    protected static ?string $activeNavigationIcon = 'heroicon-o-document-text';
+    // protected static ?string $activeNavigationIcon = 'heroicon-o-document-text';
 
     public static function form(Form $form): Form
     {
