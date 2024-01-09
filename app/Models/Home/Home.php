@@ -2,6 +2,7 @@
 
 namespace App\Models\Home;
 
+use App\Actions\GetImages;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -23,10 +24,6 @@ class Home extends Model
 
     public function getImage()
     {
-        if (str_starts_with($this->image, 'http')) {
-            return $this->image;
-        }
-
-        return '/storage/'.$this->image;
+        return (new GetImages())->handle($this->image);
     }
 }
