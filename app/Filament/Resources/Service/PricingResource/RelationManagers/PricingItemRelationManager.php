@@ -23,7 +23,7 @@ class PricingItemRelationManager extends RelationManager
                         Forms\Components\TextInput::make('item')
                             ->required()
                             ->maxLength(255),
-                        Forms\Components\Toggle::make('is_active')
+                        Forms\Components\Toggle::make('item_is_active')
                             ->label(__('Item is active in Plan'))
                     ])->columns(1)
             ]);
@@ -34,7 +34,11 @@ class PricingItemRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('item')
             ->columns([
-                Tables\Columns\TextColumn::make('item'),
+                Tables\Columns\TextColumn::make('item')
+                    ->label(__('Item')),
+                Tables\Columns\IconColumn::make('item_is_active')
+                    ->label(__('Active'))
+                    ->boolean(),
             ])
             ->filters([
                 //

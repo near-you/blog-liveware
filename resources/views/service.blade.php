@@ -47,8 +47,8 @@
                 </div>
             @endif
 
-            @if(!$partners->isEmpty())
-                <div class="tokyo_tm_partners">
+            <div class="tokyo_tm_partners">
+                @if(!$partners->isEmpty())
                     <div class="container">
                         <div class="tokyo_section_title">
                             <h3>Partners</h3>
@@ -67,11 +67,12 @@
                             </ul>
                         </div>
                     </div>
-                </div>
-            @endif
+                @endif
+            </div>
 
-            @if(!$facts->isEmpty())
-                <div class="tokyo_tm_facts">
+
+            <div class="tokyo_tm_facts">
+                @if(!$facts->isEmpty())
                     <div class="container">
                         <div class="tokyo_section_title">
                             <h3>Fun Facts</h3>
@@ -90,11 +91,13 @@
 
                         </div>
                     </div>
-                </div>
-            @endif
-            @if(!$picings->isNull)
-                <div class="tokyo_tm_pricing">
-                    <div class="container">
+                @endif
+            </div>
+
+
+            <div class="tokyo_tm_pricing">
+                <div class="container">
+                    @if(!$pricings->isEmpty())
                         <div class="tokyo_section_title">
                             <h3>Pricing</h3>
                         </div>
@@ -117,7 +120,7 @@
                                                 @foreach($pricing->pricingItem()->get() as $pricingItem)
                                                     <li @if($pricingItem->item_is_active === 1) class="active" @endif >
                                                         <p>{{ $pricingItem->item }}</p>
-                                                    </li
+                                                    </li>
                                                 @endforeach
                                             </ul>
                                             <div class="tokyo_tm_button" data-position="left">
@@ -131,12 +134,12 @@
                                         </div>
                                     </li>
                                 @endforeach
-
                             </ul>
                         </div>
-                    </div>
+                    @endif
                 </div>
-            @endif
+            </div>
+
         </div>
         <!-- /SERVICE -->
     </div>
