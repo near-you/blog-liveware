@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Service\FactsResource\Pages;
 
 use App\Filament\Resources\Service\FactsResource;
+use App\Models\Service\Facts;
 use Filament\Actions;
 use Filament\Resources\Pages\ManageRecords;
 
@@ -12,8 +13,12 @@ class ManageFacts extends ManageRecords
 
     protected function getHeaderActions(): array
     {
-        return [
-            Actions\CreateAction::make(),
-        ];
+        if (Facts::query()->count() < 3) {
+            return [
+                Actions\CreateAction::make()
+                    ->createAnother(false),
+            ];
+        }
+        return [];
     }
 }

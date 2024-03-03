@@ -47,8 +47,8 @@
                 </div>
             @endif
 
-            <div class="tokyo_tm_partners">
-                @if(!$partners->isEmpty())
+            @if(!$partners->isEmpty())
+                <div class="tokyo_tm_partners">
                     <div class="container">
                         <div class="tokyo_section_title">
                             <h3>Partners</h3>
@@ -58,21 +58,24 @@
                                 @foreach ($partners as $partner)
                                     <li>
                                         <div class="list_inner">
-                                            <a href="{{ $partner->url }}">
+                                            @if(!empty($partner->url))
+                                                <a href="{{ $partner->url }}">
+                                                    <img src="{{ $partner->getImage() }}" alt=""/>
+                                                </a>
+                                            @else
                                                 <img src="{{ $partner->getImage() }}" alt=""/>
-                                            </a>
+                                            @endif
                                         </div>
                                     </li>
                                 @endforeach
                             </ul>
                         </div>
                     </div>
-                @endif
-            </div>
+                </div>
+            @endif
 
-
-            <div class="tokyo_tm_facts">
-                @if(!$facts->isEmpty())
+            @if(!$facts->isEmpty())
+                <div class="tokyo_tm_facts">
                     <div class="container">
                         <div class="tokyo_section_title">
                             <h3>Fun Facts</h3>
@@ -82,22 +85,21 @@
                                 @foreach($facts as $fact)
                                     <li>
                                         <div class="list_inner">
-                                            <h3>{{ $fact->numbrt }}</h3>
+                                            <h3>{{ $fact->number }}</h3>
                                             <span>{{ $fact->title }}</span>
                                         </div>
                                     </li>
                                 @endforeach
                             </ul>
-
                         </div>
                     </div>
-                @endif
-            </div>
+                </div>
+            @endif
 
+            @if(!$pricings->isEmpty())
+                <div class="tokyo_tm_pricing">
+                    <div class="container">
 
-            <div class="tokyo_tm_pricing">
-                <div class="container">
-                    @if(!$pricings->isEmpty())
                         <div class="tokyo_section_title">
                             <h3>Pricing</h3>
                         </div>
@@ -136,10 +138,10 @@
                                 @endforeach
                             </ul>
                         </div>
-                    @endif
-                </div>
-            </div>
 
+                    </div>
+                </div>
+            @endif
         </div>
         <!-- /SERVICE -->
     </div>

@@ -14,7 +14,6 @@ use Livewire\Component;
 
 class Service extends Component
 {
-
     #[Title('Blog | Service')]
     public function render(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {

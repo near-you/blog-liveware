@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\About\AboutResource\RelationManagers;
 
+use App\Actions\FilamentDateSelect;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
@@ -26,15 +27,15 @@ class ExperienceRelationManager extends RelationManager
                     ->required()
                     ->maxLength(255),
 
-                Forms\Components\TextInput::make('year_start')
+                Forms\Components\Select::make('year_start')
                     ->label(__('Year Start'))
                     ->required()
-                    ->maxLength(255),
+                    ->options((new FilamentDateSelect())->handle()),
 
-                Forms\Components\TextInput::make('year_finish')
+                Forms\Components\Select::make('year_finish')
                     ->label(__('Year Finish'))
                     ->required()
-                    ->maxLength(255),
+                    ->options((new FilamentDateSelect())->handle()),
             ]);
     }
 

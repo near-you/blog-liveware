@@ -30,28 +30,31 @@ class PricingResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('price')
-                    ->label(__('Price'))
-                    ->required()
-                    ->maxLength(255),
+                Forms\Components\Fieldset::make(__('Interesting Fact'))
+                    ->schema([
+                        Forms\Components\TextInput::make('price')
+                            ->label(__('Price'))
+                            ->required()
+                            ->maxLength(255),
 
-                Select::make('currency')
-                    ->label(__('Currency'))
-                    ->required()
-                    ->options([
-                        '$' => 'USD (American Dollar)',
-                        '€' => 'EUR (Euro)',
-                        '₴' => 'HRN (Ukraine Hryvna)',
-                    ]),
+                        Select::make('currency')
+                            ->label(__('Currency'))
+                            ->required()
+                            ->options([
+                                '$' => 'USD (American Dollar)',
+                                '€' => 'EUR (Euro)',
+                                '₴' => 'HRN (Ukraine Hryvna)',
+                            ]),
 
-                Forms\Components\TextInput::make('plan')
-                    ->label(__('Plan'))
-                    ->required()
-                    ->maxLength(255),
+                        Forms\Components\TextInput::make('plan')
+                            ->label(__('Plan'))
+                            ->required()
+                            ->maxLength(255),
 
-                Forms\Components\Toggle::make('popular')
-                    ->label(__('Popular'))
-                    ->required(),
+                        Forms\Components\Toggle::make('popular')
+                            ->label(__('Popular'))
+                            ->required(),
+                    ])
             ]);
     }
 

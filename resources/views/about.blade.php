@@ -29,31 +29,78 @@
                             <div class="tokyo_tm_info">
                                 <ul>
                                     @if( $birthday )
-                                        <li><span>Birthday:</span><span>{{ $birthday }}</span></li>
-                                        <li><span>Age:</span><span>{{ \Carbon\Carbon::now()->diffInYears($birthday) }}</span></li>
+                                        <li>
+                                            <span>Birthday:</span>
+                                            <span>{{ $birthday }}</span></li>
+                                        <li>
+                                            <span>Age:</span>
+                                            <span>{{ \Carbon\Carbon::now()->diffInYears($birthday) }}</span>
+                                        </li>
                                     @endif
-                                    @if( $about->address ) <li><span>Address:</span><span>{{ $about->address }}</span></li> @endif
-                                    @if( $about->email ) <li><span>Email:</span><span><a
-                                                        href="mailto:{{ $about->email }}">{{ $about->email }}</a></span></li> @endif
-                                    @if( $about->phone ) <li><span>Phone:</span><span><a
-                                                        href="tel:{{ $about->phone }}">{{ $about->phone }}</a></span></li> @endif
+                                    @if( $about->address )
+                                        <li>
+                                            <span>Address:</span>
+                                            <span>{{ $about->address }}</span>
+                                        </li>
+                                    @endif
+                                    @if( $about->email )
+                                        <li>
+                                            <span>Email:</span>
+                                            <span>
+                                                <a href="mailto:{{ $about->email }}">{{ $about->email }}</a>
+                                            </span>
+                                        </li>
+                                    @endif
+                                    @if( $about->phone )
+                                        <li>
+                                            <span>Phone:</span>
+                                            <span>
+                                                <a href="tel:{{ $about->phone }}">{{ $about->phone }}</a>
+                                            </span>
+                                        </li>
+                                    @endif
                                 </ul>
                             </div>
                         </div>
                         <div class="right">
                             <div class="tokyo_tm_info">
                                 <ul>
-                                    @if( $about->nationality ) <li><span>Nationality:</span><span>{{ $about->nationality }}</span></li> @endif
-                                    @if( $about->study ) <li><span>Study:</span><span>{{ $about->study }}</span></li> @endif
-                                    @if( $about->degree ) <li><span>Degree:</span><span>{{ $about->degree }}</span></li> @endif
-                                    @if( $about->interest ) <li><span>Interest:</span><span>{{ $about->interest }}</span></li> @endif
-                                    @if( $about->freelance ) <li><span>Freelance:</span><span>{{ $about->freelance }}</span></li> @endif
+                                    @if( $about->nationality )
+                                        <li>
+                                            <span>Nationality:</span>
+                                            <span>{{ $about->nationality }}</span>
+                                        </li>
+                                    @endif
+                                    @if( $about->study )
+                                        <li>
+                                            <span>Study:</span>
+                                            <span>{{ $about->study }}</span>
+                                        </li>
+                                    @endif
+                                    @if( $about->degree )
+                                        <li>
+                                            <span>Degree:</span>
+                                            <span>{{ $about->degree }}</span>
+                                        </li>
+                                    @endif
+                                    @if( $about->interest )
+                                        <li>
+                                            <span>Interest:</span>
+                                            <span>{{ $about->interest }}</span>
+                                        </li>
+                                    @endif
+                                    @if( $about->freelance )
+                                        <li>
+                                            <span>Freelance:</span>
+                                            <span>{{ $about->freelance }}</span>
+                                        </li>
+                                    @endif
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="tokyo_tm_button" data-position="left">
-                        <a href="{{asset('/image/cv/1.jpg')}}" download>
+                        <a href="{{ asset('/image/cv/1.jpg') }}" download>
                             <span>Download CV</span>
                         </a>
                     </div>
@@ -68,17 +115,17 @@
                             </div>
                             <div class="tokyo_progress">
                                 @foreach( $skillLeft as $skill )
-                                <div class="progress_inner" data-value="{{ $skill->percent }}">
+                                    <div class="progress_inner" data-value="{{ $skill->percent }}">
                                     <span>
                                         <span class="label">{{ $skill->title }}</span>
                                         <span class="number">{{ $skill->percent }}%</span>
                                     </span>
-                                    <div class="background">
-                                        <div class="bar">
-                                            <div class="bar_in"></div>
+                                        <div class="background">
+                                            <div class="bar">
+                                                <div class="bar_in"></div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                                 @endforeach
                             </div>
                         </div>
@@ -88,17 +135,17 @@
                             </div>
                             <div class="tokyo_progress">
                                 @foreach( $skillRight as $skill )
-                                <div class="progress_inner" data-value="{{ $skill->percent }}">
+                                    <div class="progress_inner" data-value="{{ $skill->percent }}">
                                     <span>
                                         <span class="label">{{ $skill->title }}</span>
                                         <span class="number">{{ $skill->percent }}%</span>
                                     </span>
-                                    <div class="background">
-                                        <div class="bar">
-                                            <div class="bar_in"></div>
+                                        <div class="background">
+                                            <div class="bar">
+                                                <div class="bar_in"></div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                                 @endforeach
                             </div>
                         </div>
@@ -149,17 +196,17 @@
                             <div class="tokyo_tm_resume_list">
                                 <ul>
                                     @foreach($educations as $education)
-                                    <li>
-                                        <div class="list_inner">
-                                            <div class="time">
-                                                <span>{{ $education->year_start }} - {{ $education->year_finish }}</span>
+                                        <li>
+                                            <div class="list_inner">
+                                                <div class="time">
+                                                    <span>{{ $education->year_start }} - {{ $education->year_finish }}</span>
+                                                </div>
+                                                <div class="place">
+                                                    <h3>{{ $education->institution_name }}</h3>
+                                                    <span>{{ $education->degree }}</span>
+                                                </div>
                                             </div>
-                                            <div class="place">
-                                                <h3>{{ $education->institution_name }}</h3>
-                                                <span>{{ $education->degree }}</span>
-                                            </div>
-                                        </div>
-                                    </li>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -171,17 +218,17 @@
                             <div class="tokyo_tm_resume_list">
                                 <ul>
                                     @foreach($experiences as $experience)
-                                    <li>
-                                        <div class="list_inner">
-                                            <div class="time">
-                                                <span>{{ $experience->year_start }} - {{ $experience->year_finish }}</span>
+                                        <li>
+                                            <div class="list_inner">
+                                                <div class="time">
+                                                    <span>{{ $experience->year_start }} - {{ $experience->year_finish }}</span>
+                                                </div>
+                                                <div class="place">
+                                                    <h3>{{ $experience->company }}</h3>
+                                                    <span>{{ $experience->profession }}</span>
+                                                </div>
                                             </div>
-                                            <div class="place">
-                                                <h3>{{ $experience->company }}</h3>
-                                                <span>{{ $experience->profession }}</span>
-                                            </div>
-                                        </div>
-                                    </li>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </div>

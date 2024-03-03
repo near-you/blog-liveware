@@ -27,10 +27,18 @@ class FactsResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('number')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('title')
-                    ->maxLength(255),
+                Forms\Components\Fieldset::make(__('Interesting Fact'))
+                    ->schema([
+                        Forms\Components\TextInput::make('number')
+                            ->label('Number')
+                            ->maxLength(255)
+                            ->required(),
+                        Forms\Components\TextInput::make('title')
+                            ->label('Fact')
+                            ->maxLength(255)
+                            ->required(),
+                    ])
+
             ]);
     }
 

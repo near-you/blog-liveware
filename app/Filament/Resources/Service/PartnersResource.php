@@ -29,10 +29,14 @@ class PartnersResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\FileUpload::make('image')
-                    ->image(),
-                Forms\Components\TextInput::make('url')
-                    ->maxLength(255),
+                Forms\Components\Fieldset::make(__('Partner'))
+                    ->schema([
+                        Forms\Components\FileUpload::make('image')
+                            ->image()
+                            ->required(),
+                        Forms\Components\TextInput::make('url')
+                            ->maxLength(255),
+                    ])
             ]);
     }
 

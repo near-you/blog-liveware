@@ -2,11 +2,13 @@
 
 namespace App\Filament\Resources\About\AboutResource\RelationManagers;
 
+use App\Actions\FilamentDateSelect;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Support\Carbon;
 
 class EducationRelationManager extends RelationManager
 {
@@ -26,15 +28,15 @@ class EducationRelationManager extends RelationManager
                     ->label(__('Degree'))
                     ->maxLength(255),
 
-                Forms\Components\TextInput::make('year_start')
+                Forms\Components\Select::make('year_start')
                     ->required()
                     ->label(__('Year Start'))
-                    ->maxLength(255),
+                    ->options((new FilamentDateSelect())->handle()),
 
-                Forms\Components\TextInput::make('year_finish')
+                Forms\Components\Select::make('year_finish')
                     ->required()
                     ->label(__('Year Finish'))
-                    ->maxLength(255),
+                    ->options((new FilamentDateSelect())->handle()),
             ]);
     }
 

@@ -1,5 +1,15 @@
 <?php
 
+//use Filament\Filament;
+//use Illuminate\Support\Carbon;
+//
+//Filament::registerEnum('years', function () {
+//    $currentYear = Carbon::now()->year;
+//    $years = range($currentYear, $currentYear + 10);
+//
+//    return array_combine($years, $years);
+//});
+
 return [
 
     /*
@@ -70,5 +80,4 @@ return [
     */
 
     'livewire_loading_delay' => 'default',
-
 ];
