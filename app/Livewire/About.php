@@ -7,6 +7,8 @@ use App\Models\About\SkillTitle;
 use Carbon\Carbon;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Application;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -16,33 +18,38 @@ use App\Models\Home\Home;
 
 class About extends Component
 {
+    public Model $home;
+    public Model $about;
+    public Carbon $birth;
+    public string $birthday;
+    public Model $skillTitleRight;
+    public Model $skillTitleLeft;
+    public Collection $skillRight;
+    public Collection $skillLeft;
+    public Collection $knowledge;
+    public Collection $interests;
+    public Collection $educations;
+    public Collection $experiences;
+
+    public function mount()
+    {
+        $this->home = Home::query()->firstOrFail();
+        $this->about = AboutModel::query()->firstOrFail();
+        $this->birth = Carbon::make($this->about->date_of_birth);
+        $this->birthday = $this->birth->toFormattedDateString();
+        $this->skillTitleRight = SkillTitle::query()->firstOrFail();
+        $this->skillTitleLeft = SkillTitle::query()->orderby('id', 'desc')->first();
+        $this->skillRight = SkillTitle::query()->find($this->skillTitleRight->id)->skill;
+        $this->skillLeft = SkillTitle::query()->find($this->skillTitleLeft->id)->skill;
+        $this->knowledge = $this->about->knowledge()->get();
+        $this->interests = $this->about->interest()->get();
+        $this->educations = $this->about->education()->get();
+        $this->experiences = $this->about->experience()->get();
+    }
+
     #[Title('Blog | About')]
     public function render(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $home = Home::query()->firstOrFail();
-        $about = AboutModel::query()->firstOrFail();
-        $birth = Carbon::make($about->date_of_birth);
-        $skillTitleRight = SkillTitle::query()->firstOrFail();
-        $skillTitleLeft = SkillTitle::query()->orderby('id', 'desc')->first();
-        $skillRight = SkillTitle::query()->find($skillTitleRight->id)->skill;
-        $skillLeft = SkillTitle::query()->find($skillTitleLeft->id)->skill;
-        $knowledge = $about->knowledge()->get();
-        $interests = $about->interest()->get();
-        $educations = $about->education()->get();
-        $experiences = $about->experience()->get();
-
-        return view('about', [
-            'home' => $home,
-            'about' => $about,
-            'birthday' => $birth->toFormattedDateString(),
-            'skillTitleLeft' => $skillTitleLeft,
-            'skillTitleRight' => $skillTitleRight,
-            'skillLeft' => $skillLeft,
-            'skillRight' => $skillRight,
-            'knowledge' => $knowledge,
-            'interests' => $interests,
-            'educations' => $educations,
-            'experiences' => $experiences,
-        ]);
+        return view('about');
     }
 }

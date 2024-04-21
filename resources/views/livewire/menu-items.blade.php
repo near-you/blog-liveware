@@ -6,3 +6,4 @@
     <li><a href="/news" wire:navigate>{{ __('News') }}</a></li>
     <li><a href="/contact" wire:navigate>{{ __('Contact') }}</a></li>
 </ul>
+{{ $data }}

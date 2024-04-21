@@ -1,6 +1,6 @@
 <div class="rightpart">
     <div class="rightpart_in">
-
+{{ $data }}
         <!-- CONTACT -->
         <div id="contact" class="tokyo_tm_section animated">
             <div class="container">
