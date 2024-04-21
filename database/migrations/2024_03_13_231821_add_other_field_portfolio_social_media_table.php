@@ -11,10 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('portfolios', function (Blueprint $table) {
-            $table->id();
-            $table->boolean('is_active')->default(0);
-            $table->timestamps();
+        Schema::table('portfolio_social_media', function (Blueprint $table) {
+            $table->string('other')->after('soundcloud');
         });
     }
 
@@ -23,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('portfolios');
+        Schema::table('portfolio_social_media', function (Blueprint $table) {
+            $table->dropColumn('other');
+        });
     }
 };

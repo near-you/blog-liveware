@@ -76,21 +76,6 @@ class HomeResource extends Resource
                     ->label(__('Surname'))
                     ->searchable(),
                 Tables\Columns\ImageColumn::make('image'),
-                // Tables\Columns\TextColumn::make('facebook_link')
-                //     ->searchable()
-                //     ->label('Facebook'),
-                // Tables\Columns\TextColumn::make('twitter_link')
-                //     ->searchable()
-                //     ->label('Twitter'),
-                // Tables\Columns\TextColumn::make('behance_link')
-                //     ->searchable()
-                //     ->label('Behance'),
-                // Tables\Columns\TextColumn::make('linkedin_link')
-                //     ->searchable()
-                //     ->label('LinkedIn'),
-                // Tables\Columns\TextColumn::make('instagram_link')
-                //     ->searchable()
-                //     ->label('Instagram'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label(__('Created'))
                     ->dateTime()
