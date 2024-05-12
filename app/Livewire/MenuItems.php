@@ -11,13 +11,13 @@ class MenuItems extends Component
 {
     public string $data;
 
-    public function mount(): void
-    {
-        $this->data = '$data';
-    }
+    // public function mount(): void
+    // {
+    //     $this->data = '$data';
+    // }
 
-    public function render(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
+    /* public function render($data): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-        return view('livewire.menu-items');
-    }
+        return view('livewire.menu-items',['data'=> "$data"]);
+    } */
 }

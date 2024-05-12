@@ -13,12 +13,10 @@ use Livewire\Component;
 class Home extends Component
 {
     public Model $home;
-    public string $data;
 
     public function mount(): void
     {
-        $this->home = HomeModel::query()->firstOrFail();
-        $this->data = 'Data loooll!!!';
+        $this->home = HomeModel::query()->firstOrNew();
     }
 
     #[Title('Blog | Home')]

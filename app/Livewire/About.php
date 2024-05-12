@@ -33,11 +33,11 @@ class About extends Component
 
     public function mount()
     {
-        $this->home = Home::query()->firstOrFail();
-        $this->about = AboutModel::query()->firstOrFail();
+        $this->home = Home::query()->firstOrNew();
+        $this->about = AboutModel::query()->firstOrNew();
         $this->birth = Carbon::make($this->about->date_of_birth);
         $this->birthday = $this->birth->toFormattedDateString();
-        $this->skillTitleRight = SkillTitle::query()->firstOrFail();
+        $this->skillTitleRight = SkillTitle::query()->firstOrNew();
         $this->skillTitleLeft = SkillTitle::query()->orderby('id', 'desc')->first();
         $this->skillRight = SkillTitle::query()->find($this->skillTitleRight->id)->skill;
         $this->skillLeft = SkillTitle::query()->find($this->skillTitleLeft->id)->skill;
