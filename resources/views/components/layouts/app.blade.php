@@ -39,8 +39,10 @@
 <!-- WRAPPER ALL -->
 <div class="tokyo_tm_all_wrap" data-magic-cursor="show" data-enter="fadeInLeft" data-exit="">
 
-    @include('livewire.mobile_navigation')
+{{--    @include('livewire.mobile_navigation')--}}
+
     @include('livewire.navigation')
+
 
     {{ $slot }}
 

@@ -2,22 +2,19 @@
 
 namespace App\Livewire;
 
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
-use Illuminate\Foundation\Application;
 use Livewire\Component;
+use App\Actions\ActiveMenuItems;
 
 class MenuItems extends Component
 {
-    public string $data;
+    public $data;
 
-    // public function mount(): void
-    // {
-    //     $this->data = '$data';
-    // }
-
-    /* public function render($data): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
+    public function mount()
     {
-        return view('livewire.menu-items',['data'=> "$data"]);
-    } */
+        $this->data = (new ActiveMenuItems())->handle();
+    }
+    public function render()
+    {
+        return view('livewire.menu-items');
+    }
 }

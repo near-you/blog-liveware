@@ -20,9 +20,9 @@ class LivewireServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        view()->composer('livewire.menu-items', function ($view) {
-            $data = Portfolio::query()->value('is_active');
-            $view->with('data', $data);
-        });
+//        view()->composer('livewire.menu-items', function ($view) {
+//            $data = Portfolio::query()->value('is_active');
+//            $view->with('data', $data);
+//        });
     }
 }

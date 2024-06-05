@@ -13,7 +13,7 @@
 </div>
 <div class="tokyo_tm_mobile_menu">
     <div class="menu_list">
-         @include('livewire.menu-items')
+        @livewire('menuItems')
     </div>
 </div>
 <!-- /MOBILE MENU -->
