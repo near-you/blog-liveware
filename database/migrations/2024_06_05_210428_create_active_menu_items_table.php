@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('active_menu_items', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
