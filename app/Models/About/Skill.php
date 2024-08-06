@@ -2,9 +2,8 @@
 
 namespace App\Models\About;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Skill extends Model
 {
@@ -13,10 +12,11 @@ class Skill extends Model
     protected $fillable = [
         'title',
         'percent',
+        'skill_title_id',
     ];
 
-    public function skillTitle(): BelongsTo
-    {
-        return $this->belongsTo(SkillTitle::class);
-    }
+    // public function skillTitle(): HasMany
+    // {
+    //     return $this->hasMany(SkillTitle::class);
+    // }
 }

@@ -11,10 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('active_menu_items', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('portfolio_id')->constrained();
-            $table->timestamps();
+        Schema::table('homes', function (Blueprint $table) {
+            $table->dropColumn('image');
         });
     }
 
@@ -23,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('active_menu_items');
+        Schema::table('homes', function (Blueprint $table) {
+            $table->string('image')->nullable();
+        });
     }
 };

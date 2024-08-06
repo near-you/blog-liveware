@@ -2,15 +2,15 @@
 
 namespace App\Filament\Resources\Home;
 
-use App\Filament\Resources\Home\HomeResource\Pages;
-use App\Filament\Resources\Home\HomeResource\RelationManagers;
-use App\Models\Home\Home;
-use App\Models\User;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Forms\Form;
+use App\Models\Home\Home;
 use Filament\Tables\Table;
+use App\Events\ImageDeleted;
+use Filament\Resources\Resource;
+use Illuminate\Support\Facades\Event;
+use App\Filament\Resources\Home\HomeResource\Pages;
 
 class HomeResource extends Resource
 {
@@ -28,40 +28,71 @@ class HomeResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(120),
+                Forms\Components\Fieldset::make(__('Name'))
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->label(__('First Name'))
+                            ->required()
+                            ->maxLength(120),
 
-                Forms\Components\TextInput::make('surname')
-                    ->required()
-                    ->maxLength(120),
-
-                Forms\Components\Textarea::make('short_description')
-                    ->maxLength(2048)
-                    ->columnSpanFull(),
-
-                Forms\Components\FileUpload::make('image')
-                    ->image()
-                    ->imageEditor()
-                    ->imageEditorAspectRatios([
-                        null,
-                        '16:9',
-                        '4:3',
-                        '1:1',
+                        Forms\Components\TextInput::make('surname')
+                            ->label(__('Second Name'))
+                            ->required()
+                            ->maxLength(120),
                     ]),
 
-                Forms\Components\TextInput::make('facebook_link')
-                    ->maxLength(255)
-                    ->name('Facebook Link')
-                    ->default('Facebook'),
-                Forms\Components\TextInput::make('twitter_link')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('behance_link')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('linkedin_link')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('instagram_link')
-                    ->maxLength(255),
+                Forms\Components\Fieldset::make(__('Description'))
+                    ->schema([
+                        Forms\Components\Textarea::make('short_description')
+                            ->label(__('Your short description'))
+                            ->maxLength(2048)
+                            ->columnSpanFull(),
+                    ]),
+
+                Forms\Components\Fieldset::make('attachments')
+                    ->label(__('Image'))
+                    ->relationship('attachments')
+                    ->schema([
+                        Forms\Components\FileUpload::make('image')
+                            ->label(__('Upload Image'))
+                            ->required()
+                            ->columnSpanFull()
+                            ->image()
+                            ->directory('images')
+                            ->imageEditor()
+                    //                          ->imageEditorMode(1)
+                            ->uploadingMessage('Uploading image...')
+                            ->imageEditorAspectRatios([
+                                null,
+                                '16:9',
+                                '4:3',
+                                '1:1',
+                            ])
+                            ->deleteUploadedFileUsing(function ($file) {
+                                Event::dispatch(new ImageDeleted($file));
+                            }),
+                    ]),
+
+                Forms\Components\Fieldset::make(__('Social network links'))
+                    ->schema([
+                        Forms\Components\TextInput::make('facebook_link')
+                            ->maxLength(255)
+                            ->name('Facebook Link')
+                            ->default('Facebook'),
+
+                        Forms\Components\TextInput::make('twitter_link')
+                            ->maxLength(255),
+
+                        Forms\Components\TextInput::make('behance_link')
+                            ->maxLength(255),
+
+                        Forms\Components\TextInput::make('linkedin_link')
+                            ->maxLength(255),
+
+                        Forms\Components\TextInput::make('instagram_link')
+                            ->maxLength(255),
+                    ]),
+
             ]);
     }
 
@@ -75,7 +106,11 @@ class HomeResource extends Resource
                 Tables\Columns\TextColumn::make('surname')
                     ->label(__('Surname'))
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('image'),
+                // Tables\Columns\ImageColumn::make('homeImage')
+                //     ->label(__('Image')),
+                Tables\Columns\ImageColumn::make('attachments.image')
+                    ->label(__('Image')),
+
                 Tables\Columns\TextColumn::make('created_at')
                     ->label(__('Created'))
                     ->dateTime()

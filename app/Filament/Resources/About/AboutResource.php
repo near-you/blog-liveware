@@ -2,14 +2,19 @@
 
 namespace App\Filament\Resources\About;
 
-use App\Filament\Resources\About\AboutResource\Pages;
-use App\Filament\Resources\About\AboutResource\RelationManagers;
-use App\Models\About\About;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use App\Models\About\About;
+use Filament\Resources\Resource;
+use App\Filament\Resources\About\AboutResource\Pages;
+use App\Filament\Resources\About\AboutResource\RelationManagers\InterestRelationManager;
+use App\Filament\Resources\About\AboutResource\RelationManagers\EducationRelationManager;
+use App\Filament\Resources\About\AboutResource\RelationManagers\KnowledgeRelationManager;
+use App\Filament\Resources\About\AboutResource\RelationManagers\ExperienceRelationManager;
+use App\Filament\Resources\About\AboutResource\RelationManagers\SkillTitlesRelationManager;
+use Filament\Resources\Pages\Page;
 
 class AboutResource extends Resource
 {
@@ -168,10 +173,11 @@ class AboutResource extends Resource
     public static function getRelations(): array
     {
         return [
-            RelationManagers\KnowledgeRelationManager::class,
-            RelationManagers\InterestRelationManager::class,
-            RelationManagers\EducationRelationManager::class,
-            RelationManagers\ExperienceRelationManager::class,
+            SkillTitlesRelationManager::class,
+            KnowledgeRelationManager::class,
+            InterestRelationManager::class,
+            EducationRelationManager::class,
+            ExperienceRelationManager::class,
         ];
     }
 
@@ -181,7 +187,16 @@ class AboutResource extends Resource
             'index' => Pages\ListAbouts::route('/'),
             'create' => Pages\CreateAbout::route('/create'),
             'edit' => Pages\EditAbout::route('/{record}/edit'),
+            'skills' => Pages\Skills::route('/{record}/skills'),
         ];
+    }
+
+    public static function getRecordSubNavigation(Page $page): array
+    {
+        return $page->generateNavigationItems([
+            Pages\EditAbout::class,
+            Pages\Skills::class,
+        ]);
     }
 
     // public static function infolist(Infolist $infolist): Infolist

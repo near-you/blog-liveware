@@ -8,6 +8,7 @@
                         <div class="home_content">
                             <div class="avatar" data-type="square">
                                 <!-- data-type values are: "wave", "circle", "square"-->
+                                {{-- @dd($home->getImage()) --}}
                                 <div class="image" data-img-url="{{ optional($home)->getImage() }}"></div>
                             </div>
                             <div class="details">

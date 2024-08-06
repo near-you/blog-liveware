@@ -4,12 +4,22 @@ namespace App\Actions;
 
 class GetImages
 {
-    public function handle($image)
+    public function handle($attachments)
     {
-        if (str_starts_with($image, 'http')) {
-            return $image;
+        // foreach ($attachments as $attachment) {
+        //     dd($attachment->image);
+        //     if (str_starts_with($attachment->image, 'http')) {
+        //         return $attachment->image;
+        //     }
+
+        //     return '/storage/' . $attachment->image;
+        // }
+
+
+        if (str_starts_with($attachments->image, 'http')) {
+            return $attachments->image;
         }
 
-        return '/storage/' . $image;
+        return '/storage/' . $attachments->image;
     }
 }
