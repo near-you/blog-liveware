@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Policies\Home;
+namespace App\Policies\Portfolio;
 
 use App\Models\User;
-use App\Models\Home\Home;
+use App\Models\Portfolio\Portfolio;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class HomePolicy
+class PortfolioPolicy
 {
     use HandlesAuthorization;
 
@@ -15,15 +15,15 @@ class HomePolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->can('view_any_home::home');
+        return $user->can('view_any_portfolio::portfolio');
     }
 
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Home $home): bool
+    public function view(User $user, Portfolio $portfolio): bool
     {
-        return $user->can('view_home::home');
+        return $user->can('view_portfolio::portfolio');
     }
 
     /**
@@ -31,23 +31,23 @@ class HomePolicy
      */
     public function create(User $user): bool
     {
-        return $user->can('create_home::home');
+        return $user->can('create_portfolio::portfolio');
     }
 
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Home $home): bool
+    public function update(User $user, Portfolio $portfolio): bool
     {
-        return $user->can('update_home::home');
+        return $user->can('update_portfolio::portfolio');
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Home $home): bool
+    public function delete(User $user, Portfolio $portfolio): bool
     {
-        return $user->can('delete_home::home');
+        return $user->can('delete_portfolio::portfolio');
     }
 
     /**
@@ -55,15 +55,15 @@ class HomePolicy
      */
     public function deleteAny(User $user): bool
     {
-        return $user->can('delete_any_home::home');
+        return $user->can('delete_any_portfolio::portfolio');
     }
 
     /**
      * Determine whether the user can permanently delete.
      */
-    public function forceDelete(User $user, Home $home): bool
+    public function forceDelete(User $user, Portfolio $portfolio): bool
     {
-        return $user->can('force_delete_home::home');
+        return $user->can('force_delete_portfolio::portfolio');
     }
 
     /**
@@ -71,15 +71,15 @@ class HomePolicy
      */
     public function forceDeleteAny(User $user): bool
     {
-        return $user->can('force_delete_any_home::home');
+        return $user->can('force_delete_any_portfolio::portfolio');
     }
 
     /**
      * Determine whether the user can restore.
      */
-    public function restore(User $user, Home $home): bool
+    public function restore(User $user, Portfolio $portfolio): bool
     {
-        return $user->can('restore_home::home');
+        return $user->can('restore_portfolio::portfolio');
     }
 
     /**
@@ -87,15 +87,15 @@ class HomePolicy
      */
     public function restoreAny(User $user): bool
     {
-        return $user->can('restore_any_home::home');
+        return $user->can('restore_any_portfolio::portfolio');
     }
 
     /**
      * Determine whether the user can replicate.
      */
-    public function replicate(User $user, Home $home): bool
+    public function replicate(User $user, Portfolio $portfolio): bool
     {
-        return $user->can('replicate_home::home');
+        return $user->can('replicate_portfolio::portfolio');
     }
 
     /**
@@ -103,6 +103,6 @@ class HomePolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('reorder_home::home');
+        return $user->can('reorder_portfolio::portfolio');
     }
 }

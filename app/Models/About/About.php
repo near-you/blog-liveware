@@ -6,7 +6,7 @@ use App\Actions\GetImages;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOneThrough;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class About extends Model
 {
@@ -28,10 +28,15 @@ class About extends Model
         'freelance',
     ];
 
-    // public function skillTitle(): HasOne
-    // {
-    //     return $this->hasOne(SkillTitle::class);
-    // }
+    public function skillTitles(): HasMany
+    {
+        return $this->hasMany(SkillTitle::class);
+    }
+
+    public function skills(): HasManyThrough
+    {
+        return $this->hasManyThrough(Skill::class, SkillTitle::class  );
+    }
 
     public function knowledge(): HasMany
     {
@@ -53,10 +58,6 @@ class About extends Model
         return $this->hasMany(Experience::class);
     }
 
-    public function skill(): HasOneThrough
-    {
-        return $this->hasOneThrough(Skill::class, SkillTitle::class);
-    }
 
     public function getImage()
     {

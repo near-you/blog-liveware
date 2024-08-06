@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('abouts_id')->nullable()->constrained();
-            $table->foreignId('homes_id')->nullable()->constrained();
-            $table->foreignId('partners_id')->nullable()->constrained();
-            $table->foreignId('portfolios_id')->nullable()->constrained();
+            $table->foreignId('about_id')->nullable()->constrained();
+            $table->foreignId('home_id')->nullable()->constrained();
+            $table->foreignId('partner_id')->nullable()->constrained();
+            $table->foreignId('portfolio_id')->nullable()->constrained();
             $table->string('image');
             $table->timestamps();
         });

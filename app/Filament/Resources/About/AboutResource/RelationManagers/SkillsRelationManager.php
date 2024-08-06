@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\Portfolio\PortfolioResource\RelationManagers;
+namespace App\Filament\Resources\About\AboutResource\RelationManagers;
 
 use Filament\Forms;
-use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
@@ -11,35 +10,26 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class PortfolioImageRelationManager extends RelationManager
+class   SkillsRelationManager extends RelationManager
 {
-    protected static string $relationship = 'portfolioImage';
+    protected static string $relationship = 'skills';
 
     public function form(Form $form): Form
     {
         return $form
             ->schema([
-                Fieldset::make(__('Image'))
-                    ->schema([
-                        Forms\Components\FileUpload::make('image')
-                            ->image()
-                            ->imageEditor()
-                            ->imageEditorAspectRatios([
-                                null,
-                                '16:9',
-                                '4:3',
-                                '1:1',
-                            ]),
-                    ])
+                Forms\Components\TextInput::make('title')
+                    ->required()
+                    ->maxLength(255),
             ]);
     }
 
     public function table(Table $table): Table
     {
         return $table
-            ->recordTitleAttribute('image')
+            ->recordTitleAttribute('title')
             ->columns([
-                Tables\Columns\ImageColumn::make('image'),
+                Tables\Columns\TextColumn::make('title'),
             ])
             ->filters([
                 //
