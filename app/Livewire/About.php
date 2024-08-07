@@ -18,18 +18,18 @@ use App\Models\Home\Home;
 
 class About extends Component
 {
-    public Model $home;
-    public Model $about;
-    public Carbon $birth;
-    public string $birthday;
-    public Model $skillTitleRight;
-    public Model $skillTitleLeft;
-    public Collection $skillRight;
-    public Collection $skillLeft;
-    public Collection $knowledge;
-    public Collection $interests;
-    public Collection $educations;
-    public Collection $experiences;
+    public $home;
+    public $about;
+    public $birth;
+    public $birthday;
+    public $skillTitleLeft;
+    public $skillTitleRight;
+    public $skillLeft;
+    public $skillRight;
+    public $knowledge;
+    public $interests;
+    public $educations;
+    public $experiences;
 
     public function mount()
     {
@@ -37,10 +37,10 @@ class About extends Component
         $this->about = AboutModel::query()->firstOrNew();
         $this->birth = Carbon::make($this->about->date_of_birth);
         $this->birthday = $this->birth->toFormattedDateString();
-        $this->skillTitleRight = SkillTitle::query()->firstOrNew();
-        $this->skillTitleLeft = SkillTitle::query()->orderby('id', 'desc')->first();
-        $this->skillRight = SkillTitle::query()->find($this->skillTitleRight->id)->skill;
-        $this->skillLeft = SkillTitle::query()->find($this->skillTitleLeft->id)->skill;
+        $this->skillTitleLeft = SkillTitle::query()->firstOrNew();
+        $this->skillTitleRight = SkillTitle::query()->orderby('id', 'desc')->first();
+        $this->skillLeft = Skill::query()->where('skill_title_id', '=', $this->skillTitleLeft->id)->get();
+        $this->skillRight = Skill::query()->where('skill_title_id', '=', $this->skillTitleRight->id)->get();
         $this->knowledge = $this->about->knowledge()->get();
         $this->interests = $this->about->interest()->get();
         $this->educations = $this->about->education()->get();
@@ -48,7 +48,7 @@ class About extends Component
     }
 
     #[Title('Blog | About')]
-    public function render(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
+    public function render()
     {
         return view('about');
     }

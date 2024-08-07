@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\About;
 
+use App\Events\ImageDeleted;
 use Filament\Forms;
 use Filament\Tables;
 use Filament\Forms\Form;
@@ -15,6 +16,7 @@ use App\Filament\Resources\About\AboutResource\RelationManagers\KnowledgeRelatio
 use App\Filament\Resources\About\AboutResource\RelationManagers\ExperienceRelationManager;
 use App\Filament\Resources\About\AboutResource\RelationManagers\SkillTitlesRelationManager;
 use Filament\Resources\Pages\Page;
+use Illuminate\Support\Facades\Event;
 
 class AboutResource extends Resource
 {
@@ -91,24 +93,41 @@ class AboutResource extends Resource
 
                 Forms\Components\Section::make()
                     ->schema([
-                        Forms\Components\Grid::make(2)
+                        Forms\Components\Grid::make(1)
                             ->schema([
                                 Forms\Components\RichEditor::make('description')
                                     ->label(__('Description'))
                                     ->maxLength(65535),
-                                    // ->columnSpanFull(),
+                                // ->columnSpanFull(),
 
 
+                            ]),
+                    ]),
+
+                Forms\Components\Section::make()
+                    ->relationship('attachments')
+                    ->schema([
+                        Forms\Components\Grid::make(1)
+                            ->schema([
                                 Forms\Components\FileUpload::make('image')
+                                    ->label(__('Upload Image'))
+                                    ->required()
+//                                            ->columnSpanFull()
                                     ->image()
+                                    ->directory('images')
                                     ->imageEditor()
+                                    //                          ->imageEditorMode(1)
+                                    ->uploadingMessage('Uploading image...')
                                     ->imageEditorAspectRatios([
                                         null,
                                         '16:9',
                                         '4:3',
                                         '1:1',
-                                    ]),
-                                ]),
+                                    ])
+                                    ->deleteUploadedFileUsing(function ($file) {
+                                        Event::dispatch(new ImageDeleted($file));
+                                    }),
+                            ]),
                     ]),
             ]);
     }
@@ -121,35 +140,8 @@ class AboutResource extends Resource
                     ->label(__('Profession'))
                     ->searchable(),
 
-                Tables\Columns\ImageColumn::make('image')
+                Tables\Columns\ImageColumn::make('attachments.image')
                     ->label(__('Image')),
-//                Tables\Columns\TextColumn::make('date_of_birth')
-//                    ->label(__('Birthday'))
-//                    ->dateTime('d-m-Y'),
-//                Tables\Columns\TextColumn::make('address')
-//                    ->label(__('Address'))
-//                    ->searchable(),
-//                Tables\Columns\TextColumn::make('email')
-//                    ->label(__('Email'))
-//                    ->icon('heroicon-m-envelope')
-//                    ->iconColor('primary')
-//                    ->copyable()
-//                    ->copyMessage(__('Email address copied'))
-//                    ->copyMessageDuration(1500)
-//                    ->searchable(),
-//                Tables\Columns\TextColumn::make('phone')
-//                    ->label(__('Phone'))
-//                    ->searchable(),
-//                Tables\Columns\TextColumn::make('nationality')
-//                    ->searchable(),
-//                Tables\Columns\TextColumn::make('study')
-//                    ->searchable(),
-//                Tables\Columns\TextColumn::make('degree')
-//                    ->searchable(),
-//                Tables\Columns\TextColumn::make('interest')
-//                    ->searchable(),
-//                Tables\Columns\TextColumn::make('freelance')
-//                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->label(__('Created'))
                     ->dateTime()
@@ -187,32 +179,6 @@ class AboutResource extends Resource
             'index' => Pages\ListAbouts::route('/'),
             'create' => Pages\CreateAbout::route('/create'),
             'edit' => Pages\EditAbout::route('/{record}/edit'),
-            'skills' => Pages\Skills::route('/{record}/skills'),
         ];
     }
-
-    public static function getRecordSubNavigation(Page $page): array
-    {
-        return $page->generateNavigationItems([
-            Pages\EditAbout::class,
-            Pages\Skills::class,
-        ]);
-    }
-
-    // public static function infolist(Infolist $infolist): Infolist
-    // {
-    //     return $infolist
-    //         ->schema([
-    //             Infolists\Components\TextEntry::make('profession')
-    //                 ->label(__('Profession')),
-    //             Infolists\Components\TextEntry::make('email')
-    //                 ->label(__('Email')),
-    //             Infolists\Components\ImageEntry::make('image')
-    //                 ->columnSpanFull(),
-    //             Infolists\Components\TextEntry::make('description')
-    //                 ->label(__('Description'))
-    //                 ->html()
-    //                 ->columnSpanFull(),
-    //         ]);
-    // }
 }
