@@ -1,29 +1,44 @@
 <!-- RIGHTPART -->
 <div class="rightpart">
+
         <div class="rightpart_in">
 
             <!-- ABOUT -->
             <div id="about" class="tokyo_tm_section active animated">
+
                 <div class="container">
+
                     <div class="tokyo_tm_about">
+
                         <div class="tokyo_tm_title">
+
                             <div class="title_flex">
+
                                 <div class="left">
+
                                     <span>About</span>
+
                                     <h3>About Me</h3>
+
                                 </div>
+
                             </div>
+
                         </div>
+
                         <div class="top_author_image">
-                            <img src="{{ $about->getImage() }}" alt="About pictures"/>
+                            <img src="" alt="About pictures"/>
                         </div>
+
                         <div class="about_title">
                             <h3>{{ $home->name ?? '' }} {{ $home->surname ?? '' }}</h3>
                             <span>{{ $about->my_profession }}</span>
                         </div>
+
                         <div class="about_text">
                             {!! $about->description !!}
                         </div>
+
                         <div class="tokyo_tm_short_info">
                             <div class="left">
                                 <div class="tokyo_tm_info">
@@ -99,13 +114,17 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="tokyo_tm_button" data-position="left">
                             <a href="{{ asset('/image/cv/1.jpg') }}" download>
                                 <span>Download CV</span>
                             </a>
                         </div>
+
                     </div>
                 </div>
+
+                <!-- START SKILLS SECTION -->
                 <div class="tokyo_tm_progressbox">
                     <div class="container">
                         <div class="in">
@@ -152,6 +171,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="tokyo_tm_skillbox">
                     <div class="container">
                         <div class="in">
@@ -186,6 +206,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="tokyo_tm_resumebox">
                     <div class="container">
                         <div class="in">
@@ -236,6 +257,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="tokyo_tm_testimonials">
                     <div class="container">
                         <div class="tokyo_section_title">
@@ -301,8 +323,11 @@
                         </div>
                     </div>
                 </div>
+                <!-- END SKILLS SECTION -->
+
             </div>
             <!-- /ABOUT -->
 
         </div>
+
     </div>

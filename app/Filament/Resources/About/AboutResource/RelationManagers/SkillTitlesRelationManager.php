@@ -6,7 +6,10 @@ use Filament\Forms;
 use Filament\Tables;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use App\Models\About\Skill;
+use App\Models\About\SkillTitle;
 use Filament\Forms\Components\Fieldset;
+use Filament\Forms\Components\Repeater;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Resources\RelationManagers\RelationManager;
@@ -22,10 +25,34 @@ class SkillTitlesRelationManager extends RelationManager
                 Fieldset::make('Title for Skills Group')
                     ->schema([
                         Forms\Components\TextInput::make('title')
+                            ->label(__('Skill Title'))
                             ->required()
-                            ->maxLength(255),
-                        ])
-                    ]);
+                            ->maxLength(255)
+                            ->columnSpanFull(),
+                    ]),
+
+
+                Fieldset::make('Skills Group')
+                    ->schema([
+                        Repeater::make('skills')
+                            ->relationship('skills')
+                            ->schema([
+                                Forms\Components\TextInput::make('title')
+                                    ->label(__('Skill'))
+                                    ->required()
+                                    ->maxLength(255),
+
+                                Forms\Components\TextInput::make('percent')
+                                    ->label(__('Percents'))
+                                    ->required()
+                                    ->suffix('%')
+                                    ->integer()
+                                    ->maxLength(3),
+                            ])->columns(2)->columnSpanFull(),
+                        ]),
+
+
+            ]);
 
     }
 
@@ -40,23 +67,17 @@ class SkillTitlesRelationManager extends RelationManager
                 //
             ])
             ->headerActions([
-                Tables\Actions\CreateAction::make(),
+                Tables\Actions\CreateAction::make()
+                    ->visible(fn () => SkillTitle::count() < 2),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                // Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                // Tables\Actions\BulkActionGroup::make([
+                //     Tables\Actions\DeleteBulkAction::make(),
+                // ]),
             ]);
-    }
-
-    public static function getRelations(): array
-    {
-        return [
-            SkillsRelationManager::class,
-        ];
     }
 }

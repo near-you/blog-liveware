@@ -15,7 +15,6 @@ class GetImages
         //     return '/storage/' . $attachment->image;
         // }
 
-
         if (str_starts_with($attachments->image, 'http')) {
             return $attachments->image;
         }
