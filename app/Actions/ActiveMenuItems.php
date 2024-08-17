@@ -4,8 +4,8 @@ namespace App\Actions;
 
 class ActiveMenuItems
 {
-    public function handle()
+    public function handle($isActive)
     {
-        return 'Lolll';
+        return $isActive;
     }
 }

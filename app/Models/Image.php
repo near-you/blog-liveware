@@ -11,10 +11,10 @@ class Image extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['home_id', 'image'];
+    protected $fillable = ['image_url'];
 
-    public function home(): BelongsTo
-    {
-        return $this->belongsTo(Home::class);
-    }
+//    public function home(): BelongsTo
+//    {
+//        return $this->belongsTo(Home::class);
+//    }
 }

@@ -16,11 +16,11 @@ class HomeResource extends Resource
 {
     protected static ?string $model = Home::class;
 
-    protected static ?string $navigationGroup = 'Home Page';
+//    protected static ?string $navigationGroup = 'Home Page';
 
     protected static ?int $navigationSort = 1;
 
-    protected static ?string $navigationLabel = 'Home';
+    protected static ?string $navigationLabel = 'Page: Home';
 
     protected static ?string $navigationIcon = 'heroicon-o-user';
 
@@ -53,12 +53,12 @@ class HomeResource extends Resource
                     ->label(__('Image'))
                     ->relationship('attachments')
                     ->schema([
-                        Forms\Components\FileUpload::make('image')
+                        Forms\Components\FileUpload::make('image_url')
                             ->label(__('Upload Image'))
                             ->required()
                             ->columnSpanFull()
                             ->image()
-                            ->directory('images')
+                            ->directory('images/home')
                             ->imageEditor()
                     //                          ->imageEditorMode(1)
                             ->uploadingMessage('Uploading image...')

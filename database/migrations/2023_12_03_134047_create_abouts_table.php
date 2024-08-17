@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('abouts', function (Blueprint $table) {
             $table->id();
             $table->string('profession', 250)->nullable();
-            $table->string('image')->nullable();
             $table->text('description')->nullable();
             $table->date('date_of_birth')->nullable();
             $table->string('address')->nullable();

@@ -2,6 +2,8 @@
 
 namespace App\Actions;
 
+use function PHPUnit\Framework\isNull;
+
 class GetImages
 {
     public function handle($attachments)
@@ -15,10 +17,15 @@ class GetImages
         //     return '/storage/' . $attachment->image;
         // }
 
-        if (str_starts_with($attachments->image, 'http')) {
-            return $attachments->image;
-        }
 
-        return '/storage/' . $attachments->image;
+        if (is_null($attachments)) {
+            return '';
+        } else {
+            if (str_starts_with($attachments->image_url, 'http')) {
+                return $attachments->image_url;
+            }
+
+            return '/storage/' . $attachments->image_url;
+        }
     }
 }

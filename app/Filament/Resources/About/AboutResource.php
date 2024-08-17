@@ -22,11 +22,11 @@ class AboutResource extends Resource
 {
     protected static ?string $model = About::class;
 
-    protected static ?string $navigationGroup = 'About Page';
+//    protected static ?string $navigationGroup = 'About Page';
 
     protected static ?int $navigationSort = 2;
 
-    protected static ?string $navigationLabel = 'About';
+    protected static ?string $navigationLabel = 'Page: About';
 
     protected static ?string $navigationIcon = 'heroicon-o-identification';
 
@@ -109,12 +109,12 @@ class AboutResource extends Resource
                     ->schema([
                         Forms\Components\Grid::make(1)
                             ->schema([
-                                Forms\Components\FileUpload::make('image')
+                                Forms\Components\FileUpload::make('image_url')
                                     ->label(__('Upload Image'))
                                     ->required()
 //                                            ->columnSpanFull()
                                     ->image()
-                                    ->directory('images')
+                                    ->directory('images/about')
                                     ->imageEditor()
                                     //                          ->imageEditorMode(1)
                                     ->uploadingMessage('Uploading image...')
