@@ -4,6 +4,7 @@ namespace App\Models\Home;
 
 use App\Models\Image;
 use App\Actions\GetImages;
+use App\Traits\HandlesFileDeletion;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Request;
 class Home extends Model
 {
     use HasFactory;
+    use HandlesFileDeletion;
 
     protected $fillable = [
         'name',
@@ -28,7 +30,7 @@ class Home extends Model
 
     public function attachments(): HasOne
     {
-        return $this->hasOne(Image::class, 'home_id', 'id');
+        return $this->hasOne(Image::class);
     }
 
     public function getImage()

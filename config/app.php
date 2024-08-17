@@ -186,6 +186,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        'Purifier' => Mews\Purifier\Facades\Purifier::class,
     ])->toArray(),
 
 ];

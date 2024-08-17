@@ -11,7 +11,7 @@ class MenuItems extends Component
 
     public function mount()
     {
-        $this->data = (new ActiveMenuItems())->handle();
+//        $this->data = (new ActiveMenuItems())->handle();
     }
     public function render()
     {

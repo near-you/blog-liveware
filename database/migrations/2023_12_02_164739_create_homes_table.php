@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('surname');
             $table->text('short_description')->nullable();
-            $table->string('image')->nullable();
             $table->string('facebook_link')->nullable()->default('#');
             $table->string('twitter_link')->nullable()->default('#');
             $table->string('behance_link')->nullable()->default('#');

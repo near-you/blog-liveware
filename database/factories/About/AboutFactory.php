@@ -2,10 +2,11 @@
 
 namespace Database\Factories\About;
 
+use App\Models\About\About;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\About\About>
+ * @extends Factory<About>
  */
 class AboutFactory extends Factory
 {
@@ -18,7 +19,6 @@ class AboutFactory extends Factory
     {
         return [
             'profession' => fake()->jobTitle,
-            'image' => fake()->imageUrl($width = 640, $height = 480),
             'description' => fake()->text($maxNbChars = 200),
             'date_of_birth' => fake()->date($format = 'Y-m-d', $max = 'now'),
             'address' => fake()->address,

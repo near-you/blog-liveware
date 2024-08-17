@@ -27,7 +27,7 @@
                         </div>
 
                         <div class="top_author_image">
-                            <img src="" alt="About pictures"/>
+                            <img src="{{ optional($about)->getImage() }}" alt="About pictures"/>
                         </div>
 
                         <div class="about_title">
