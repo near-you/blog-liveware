@@ -16,6 +16,7 @@ use Livewire\Attributes\Title;
 use Livewire\Component;
 use App\Models\About\About as AboutModel;
 use App\Models\Home\Home;
+use function PHPUnit\Framework\isNull;
 
 
 class About extends Component
@@ -40,16 +41,18 @@ class About extends Component
     {
         $this->home = Home::query()->firstOrNew();
         $this->about = AboutModel::query()->firstOrNew();
-        $this->birth = Carbon::make($this->about->date_of_birth);
-        $this->birthday = $this->birth->toFormattedDateString();
-        $this->skillTitleLeft = SkillTitle::query()->firstOrNew();
-        $this->skillTitleRight = SkillTitle::query()->orderby('id', 'desc')->firstOrNew();
-        $this->skillLeft = Skill::query()->where('skill_title_id', '=', $this->skillTitleLeft->id)->get();
-        $this->skillRight = Skill::query()->where('skill_title_id', '=', $this->skillTitleRight->id)->get();
-        $this->knowledge = $this->about->knowledge()->get();
-        $this->interests = $this->about->interest()->get();
-        $this->educations = $this->about->education()->get();
-        $this->experiences = $this->about->experience()->get();
+        if ( $this->about->exists()) {
+            $this->birth = Carbon::make($this->about->date_of_birth);
+            $this->birthday = $this->birth->toFormattedDateString();
+            $this->skillTitleLeft = SkillTitle::query()->firstOrNew();
+            $this->skillTitleRight = SkillTitle::query()->orderby('id', 'desc')->firstOrNew();
+            $this->skillLeft = Skill::query()->where('skill_title_id', '=', $this->skillTitleLeft->id)->get();
+            $this->skillRight = Skill::query()->where('skill_title_id', '=', $this->skillTitleRight->id)->get();
+            $this->knowledge = $this->about->knowledge()->get();
+            $this->interests = $this->about->interest()->get();
+            $this->educations = $this->about->education()->get();
+            $this->experiences = $this->about->experience()->get();
+        }
     }
 
     #[Title('Blog | About')]

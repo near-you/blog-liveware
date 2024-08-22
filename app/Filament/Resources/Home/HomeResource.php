@@ -20,7 +20,7 @@ class HomeResource extends Resource
 
     protected static ?int $navigationSort = 1;
 
-    protected static ?string $navigationLabel = 'Page: Home';
+    protected static ?string $navigationLabel = 'Home';
 
     protected static ?string $navigationIcon = 'heroicon-o-user';
 
@@ -31,12 +31,12 @@ class HomeResource extends Resource
                 Forms\Components\Fieldset::make(__('Name'))
                     ->schema([
                         Forms\Components\TextInput::make('name')
-                            ->label(__('First Name'))
+                            ->label(__('First name'))
                             ->required()
                             ->maxLength(120),
 
                         Forms\Components\TextInput::make('surname')
-                            ->label(__('Second Name'))
+                            ->label(__('Second name'))
                             ->required()
                             ->maxLength(120),
                     ]),
@@ -77,20 +77,28 @@ class HomeResource extends Resource
                     ->schema([
                         Forms\Components\TextInput::make('facebook_link')
                             ->maxLength(255)
-                            ->name('Facebook Link')
+                            ->name('Facebook link')
                             ->default('Facebook'),
 
                         Forms\Components\TextInput::make('twitter_link')
-                            ->maxLength(255),
+                            ->maxLength(255)
+                            ->name('Twitter link')
+                            ->default('Facebook'),
 
                         Forms\Components\TextInput::make('behance_link')
-                            ->maxLength(255),
+                            ->maxLength(255)
+                            ->name('Behance link')
+                            ->default('Behance'),
 
                         Forms\Components\TextInput::make('linkedin_link')
-                            ->maxLength(255),
+                            ->maxLength(255)
+                            ->name('LinkedIn link')
+                            ->default('Facebook'),
 
                         Forms\Components\TextInput::make('instagram_link')
-                            ->maxLength(255),
+                            ->maxLength(255)
+                            ->name('Instagram link')
+                            ->default('Facebook'),
                     ]),
 
             ]);

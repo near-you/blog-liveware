@@ -2,15 +2,12 @@
 
 namespace App\Models\Home;
 
-use App\Models\Image;
 use App\Actions\GetImages;
+use App\Models\Other\Image;
 use App\Traits\HandlesFileDeletion;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Support\Facades\Request;
 
 class Home extends Model
 {

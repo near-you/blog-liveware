@@ -27,8 +27,8 @@ class ServicePartnerSectionRelationManager extends RelationManager
 //                                    ->label(__('Is Active')),
 //                            ]),
 
-                        Forms\Components\Fieldset::make(__('Partner Information'))
-                            ->schema([
+//                        Forms\Components\Fieldset::make(__('Partner Information'))
+//                            ->schema([
                                 Forms\Components\TextInput::make('partner_company_name')
                                     ->label(__('Company Name')),
 
@@ -36,12 +36,11 @@ class ServicePartnerSectionRelationManager extends RelationManager
                                 Forms\Components\TextInput::make('partner_website_url')
                                     ->label(__('Partner Website Url'))
                                     ->url()
-                                    ->suffixIcon('heroicon-m-globe-alt')
+                                    ->suffixIcon('heroicon-m-globe-alt'),
 //                                    ->suffixIconColor('success')
-                            ]),
+//                            ]),
 
-                        Forms\Components\Fieldset::make('attachments')
-                            ->label(__('Image'))
+                        Forms\Components\Fieldset::make(__('Image'))
                             ->relationship('attachments')
                             ->schema([
                                 Forms\Components\FileUpload::make('image_url')
@@ -71,7 +70,7 @@ class ServicePartnerSectionRelationManager extends RelationManager
     public function table(Table $table): Table
     {
         return $table
-            ->recordTitleAttribute('is_active')
+            ->recordTitleAttribute('partner_company_name')
             ->columns([
 //                Tables\Columns\IconColumn::make('is_active')
 //                    ->label(__('Is Active'))

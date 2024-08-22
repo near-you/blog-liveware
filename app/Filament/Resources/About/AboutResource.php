@@ -26,7 +26,7 @@ class AboutResource extends Resource
 
     protected static ?int $navigationSort = 2;
 
-    protected static ?string $navigationLabel = 'Page: About';
+    protected static ?string $navigationLabel = 'About';
 
     protected static ?string $navigationIcon = 'heroicon-o-identification';
 

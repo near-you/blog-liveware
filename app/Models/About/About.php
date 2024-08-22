@@ -3,7 +3,7 @@
 namespace App\Models\About;
 
 use App\Actions\GetImages;
-use App\Models\Image;
+use App\Models\Other\Image;
 use App\Traits\HandlesFileDeletion;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

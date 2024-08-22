@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Filament\Resources\Service;
+namespace App\Filament\Resources\Other;
 
-use App\Filament\Resources\Service\ServiceResource\Pages;
-use App\Filament\Resources\Service\ServiceResource\RelationManagers;
-use App\Models\Service\Service;
+use App\Filament\Resources\Other\CurrencyResource\Pages;
+use App\Filament\Resources\Other\CurrencyResource\RelationManagers;
+use App\Models\Other\Currency;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,11 +13,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class ServiceResource extends Resource
+class CurrencyResource extends Resource
 {
-    protected static ?string $model = Service::class;
-
-    protected static ?int $navigationSort = 3;
+    protected static ?string $model = Currency::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -25,9 +23,18 @@ class ServiceResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Toggle::make('is_active')
+                Forms\Components\TextInput::make('code')
                     ->required()
-                    ->label(__('Active')),
+                    ->maxLength(3),
+                Forms\Components\TextInput::make('name')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('exchange_rate')
+                    ->required()
+                    ->numeric()
+                    ->maxValue(42949672.95),
+                Forms\Components\Toggle::make('active')
+                    ->required(),
             ]);
     }
 
@@ -35,15 +42,19 @@ class ServiceResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\IconColumn::make('is_active')
-                    ->label(__('Active'))
+                Tables\Columns\TextColumn::make('code')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('exchange_rate')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\IconColumn::make('active')
                     ->boolean(),
-
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
@@ -65,19 +76,16 @@ class ServiceResource extends Resource
     public static function getRelations(): array
     {
         return [
-            RelationManagers\ServiceWhatIDoSectionRelationManager::class,
-            RelationManagers\ServicePartnerSectionRelationManager::class,
-            RelationManagers\ServiceFunFactSectionRelationManager::class,
-//            RelationManagers\ServicePricingSectionRelationManager::class,
+            //
         ];
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListServices::route('/'),
-            'create' => Pages\CreateService::route('/create'),
-            'edit' => Pages\EditService::route('/{record}/edit'),
+            'index' => Pages\ListCurrencies::route('/'),
+            'create' => Pages\CreateCurrency::route('/create'),
+            'edit' => Pages\EditCurrency::route('/{record}/edit'),
         ];
     }
 }
