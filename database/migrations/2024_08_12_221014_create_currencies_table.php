@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('service_fun_facts_sections', function (Blueprint $table) {
+        Schema::create('currencies', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('service_id')->constrained('services')->cascadeOnDelete();
-            $table->string('fact_count')->nullable();
-            $table->string('fact_title')->nullable();
+            $table->string('code', 3)->unique();
+            $table->string('name');
+            $table->decimal('exchange_rate', 15, 8);
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
     }
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('service_fun_facts_sections');
+        Schema::dropIfExists('currencies');
     }
 };

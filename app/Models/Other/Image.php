@@ -1,11 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Other;
 
-use App\Models\Home\Home;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Image extends Model
 {

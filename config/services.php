@@ -31,4 +31,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'currency_api' => [
+        'url' => env('CURRENCY_API_URL', 'http://data.fixer.io/api/latest'),
+        'key' => env('CURRENCY_API_KEY', 'your_api_key_here'),
+    ],
+
 ];

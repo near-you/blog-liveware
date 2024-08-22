@@ -1,17 +1,18 @@
 <?php
 
-namespace App\Models\Service;
+namespace App\Models\Other;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ServiceFunFactsSection extends Model
+class Currency extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'is_active',
-        'fact_count',
-        'fact_title',
+        'code',
+        'name',
+        'exchange_rate',
+        'active',
     ];
 }

@@ -20,14 +20,17 @@ class Service extends Component
 
     public Collection $partnersSection;
 
-    public int $count;
+    public int $whatIDoSectionArticleCount;
+
+    public Collection $funFactSection;
 
     public function mount(): void
     {
         $this->serviceModel = ServiceModel::query()->firstOrNew();
         $this->whatIDoSection = $this->serviceModel->serviceWhatIDoSection;
         $this->partnersSection = $this->serviceModel->servicePartnerSection;
-        $this->count = 1;
+        $this->whatIDoSectionArticleCount = 1;
+        $this->funFactSection = $this->serviceModel->serviceFunFactSection;
     }
     #[Title('Blog | Service')]
     public function render(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application

@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('service_what_i_do_sections', function (Blueprint $table) {
             $table->id();
-            $table->boolean('is_active')->default(0);
             $table->foreignId('service_id')->constrained('services')->onDelete('cascade');
             $table->string('title')->nullable();
             $table->longText('description')->nullable();

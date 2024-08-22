@@ -22,17 +22,17 @@ class SkillTitlesRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                Fieldset::make('Title for Skills Group')
+                Fieldset::make('The name of the Skill group')
                     ->schema([
                         Forms\Components\TextInput::make('title')
-                            ->label(__('Skill Title'))
+                            ->label(__('Skill title'))
                             ->required()
                             ->maxLength(255)
                             ->columnSpanFull(),
                     ]),
 
 
-                Fieldset::make('Skills Group')
+                Fieldset::make('Skills group')
                     ->schema([
                         Repeater::make('skills')
                             ->relationship('skills')

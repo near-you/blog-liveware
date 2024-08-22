@@ -13,13 +13,12 @@ return new class extends Migration
     {
         Schema::create('service_pricing_sections', function (Blueprint $table) {
             $table->id();
-            $table->boolean('is_active')->default(0);
             $table->foreignId('service_id')->constrained('services')->cascadeOnDelete();
-            $table->string('service_price');
-            $table->string('service_currency');
-            $table->string('service_plan');
-            $table->boolean('service_popular')->default(0);
-            $table->string('service_purchase_url');
+            $table->integer('pricing_section_price')->nullable();
+            $table->foreignId('currency_id')->constrained('currencies')->cascadeOnDelete();
+            $table->string('pricing_section_plan')->nullable();
+            $table->boolean('pricing_section_popular')->default(0);
+            $table->string('pricing_section_purchase_url')->nullable();
             $table->timestamps();
         });
     }

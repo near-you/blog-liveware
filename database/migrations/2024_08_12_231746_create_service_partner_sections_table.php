@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('service_partner_sections', function (Blueprint $table) {
             $table->id();
-            $table->boolean('is_active')->default(0);
             $table->foreignId('service_id')->constrained('services')->cascadeOnDelete();
             $table->string('partner_company_name')->nullable();
             $table->string('partner_website_url')->nullable();

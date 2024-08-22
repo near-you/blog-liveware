@@ -4,26 +4,17 @@
         <div class="rightpart_in">
 
             <!-- ABOUT -->
+            @if( $about->exists() )
             <div id="about" class="tokyo_tm_section active animated">
-
                 <div class="container">
-
                     <div class="tokyo_tm_about">
-
                         <div class="tokyo_tm_title">
-
                             <div class="title_flex">
-
                                 <div class="left">
-
                                     <span>About</span>
-
                                     <h3>About Me</h3>
-
                                 </div>
-
                             </div>
-
                         </div>
 
                         <div class="top_author_image">
@@ -326,6 +317,7 @@
                 <!-- END SKILLS SECTION -->
 
             </div>
+            @endif
             <!-- /ABOUT -->
 
         </div>
