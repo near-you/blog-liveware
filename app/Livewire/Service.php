@@ -24,6 +24,8 @@ class Service extends Component
 
     public Collection $funFactSection;
 
+    public Collection $pricingSection;
+
     public function mount(): void
     {
         $this->serviceModel = ServiceModel::query()->firstOrNew();
@@ -31,6 +33,8 @@ class Service extends Component
         $this->partnersSection = $this->serviceModel->servicePartnerSection;
         $this->whatIDoSectionArticleCount = 1;
         $this->funFactSection = $this->serviceModel->serviceFunFactSection;
+        $this->pricingSection = $this->serviceModel->servicePricingSection;
+
     }
     #[Title('Blog | Service')]
     public function render(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application

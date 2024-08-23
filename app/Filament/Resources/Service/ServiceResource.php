@@ -68,7 +68,7 @@ class ServiceResource extends Resource
             RelationManagers\ServiceWhatIDoSectionRelationManager::class,
             RelationManagers\ServicePartnerSectionRelationManager::class,
             RelationManagers\ServiceFunFactSectionRelationManager::class,
-//            RelationManagers\ServicePricingSectionRelationManager::class,
+            RelationManagers\ServicePricingSectionRelationManager::class,
         ];
     }
 

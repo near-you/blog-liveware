@@ -23,18 +23,32 @@ class CurrencyResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('code')
-                    ->required()
-                    ->maxLength(3),
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('exchange_rate')
-                    ->required()
-                    ->numeric()
-                    ->maxValue(42949672.95),
-                Forms\Components\Toggle::make('active')
-                    ->required(),
+                Forms\Components\Fieldset::make(__('Information about currencies'))
+                    ->schema([
+                        Forms\Components\Section::make()
+                            ->schema([
+                                Forms\Components\Toggle::make('active')
+                                    ->required()
+                                    ->label(__('Active')),
+                            ]),
+                        Forms\Components\Section::make()
+                            ->schema([
+                                Forms\Components\TextInput::make('code')
+                                    ->required()
+                                    ->label(__('Currency code'))
+                                    ->maxLength(3),
+                                Forms\Components\TextInput::make('name')
+                                    ->required()
+                                    ->label(__('Currency symbol'))
+                                    ->maxLength(255),
+                                Forms\Components\TextInput::make('exchange_rate')
+                                    ->required()
+                                    ->label(__('Exchange rate'))
+                                    ->numeric()
+                                    ->maxValue(42949672.95),
+                            ])->columns(2),
+                    ]),
+
             ]);
     }
 

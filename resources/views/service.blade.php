@@ -108,52 +108,50 @@
                                 </div>
                             @endif
 
-            {{--                @if(!$pricings->isEmpty())--}}
-            {{--                    <div class="tokyo_tm_pricing">--}}
-            {{--                        <div class="container">--}}
-
-            {{--                            <div class="tokyo_section_title">--}}
-            {{--                                <h3>Pricing</h3>--}}
-            {{--                            </div>--}}
-            {{--                            <div class="list">--}}
-            {{--                                <ul>--}}
-            {{--                                    @foreach($pricings as $pricing)--}}
-            {{--                                        <li>--}}
-            {{--                                            <div class="list_inner">--}}
-            {{--                                                <div class="price">--}}
-            {{--                                                    <h3>--}}
-            {{--                                                <span>{{ $pricing->price }}--}}
-            {{--                                                    <span class="currency">{{ $pricing->currency }}</span>--}}
-            {{--                                                </span>--}}
-            {{--                                                    </h3>--}}
-            {{--                                                </div>--}}
-            {{--                                                <div class="plan">--}}
-            {{--                                                    <h3>{{ $pricing->plan }}</h3>--}}
-            {{--                                                </div>--}}
-            {{--                                                <ul class="item">--}}
-            {{--                                                    @foreach($pricing->pricingItem()->get() as $pricingItem)--}}
-            {{--                                                        <li @if($pricingItem->item_is_active === 1) class="active" @endif >--}}
-            {{--                                                            <p>{{ $pricingItem->item }}</p>--}}
-            {{--                                                        </li>--}}
-            {{--                                                    @endforeach--}}
-            {{--                                                </ul>--}}
-            {{--                                                <div class="tokyo_tm_button" data-position="left">--}}
-            {{--                                                    <a href="#">--}}
-            {{--                                                        <span>Purchase</span>--}}
-            {{--                                                    </a>--}}
-            {{--                                                </div>--}}
-            {{--                                                @if($pricing->popular === 1)--}}
-            {{--                                                    <span class="popular">Popular</span>--}}
-            {{--                                                @endif--}}
-            {{--                                            </div>--}}
-            {{--                                        </li>--}}
-            {{--                                    @endforeach--}}
-            {{--                                </ul>--}}
-            {{--                            </div>--}}
-
-            {{--                        </div>--}}
-            {{--                    </div>--}}
-            {{--                @endif--}}
+                            @if(!$pricingSection->isEmpty())
+                                <div class="tokyo_tm_pricing">
+                                    <div class="container">
+                                        <div class="tokyo_section_title">
+                                            <h3>Pricing</h3>
+                                        </div>
+                                        <div class="list">
+                                            <ul>
+                                                @foreach($pricingSection as $pricing)
+                                                    <li>
+                                                        <div class="list_inner">
+                                                            <div class="price">
+                                                                <h3>
+                                                            <span>{{ $pricing->pricing_section_price }}
+                                                                <span class="currency">$</span>
+                                                            </span>
+                                                                </h3>
+                                                            </div>
+                                                            <div class="plan">
+                                                                <h3>{{ $pricing->pricing_section_plan }}</h3>
+                                                            </div>
+                                                            <ul class="item">
+                                                                @foreach($pricing->pricingItems()->get() as $pricingItem)
+                                                                    <li @if($pricingItem->item_is_active === 1) class="active" @endif >
+                                                                        <p>{{ $pricingItem->item }}</p>
+                                                                    </li>
+                                                                @endforeach
+                                                            </ul>
+                                                            <div class="tokyo_tm_button" data-position="left">
+                                                                <a href="#">
+                                                                    <span>Purchase</span>
+                                                                </a>
+                                                            </div>
+                                                            @if($pricing->pricing_section_popular === 1)
+                                                                <span class="popular">Popular</span>
+                                                            @endif
+                                                        </div>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
         </div>
         @endif
         <!-- /SERVICE -->

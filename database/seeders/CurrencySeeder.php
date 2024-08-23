@@ -11,10 +11,11 @@ class CurrencySeeder extends Seeder
     public function run(): void
     {
         $currencies = [
-            ['code' => 'USD', 'name' => 'US Dollar', 'exchange_rate' => 1],
-            ['code' => 'EUR', 'name' => 'Euro', 'exchange_rate' => 1],
-            ['code' => 'UAH', 'name' => 'Hryvna', 'exchange_rate' => 1],
-            ['code' => 'PLN', 'name' => 'Zloty', 'exchange_rate' => 1],
+            ['code' => 'EUR', 'name' => '€', 'exchange_rate' => 1],
+            ['code' => 'GBP', 'name' => '£', 'exchange_rate' => 1],
+            ['code' => 'USD', 'name' => '$', 'exchange_rate' => 1],
+            ['code' => 'UAH', 'name' => '₴', 'exchange_rate' => 1],
+            ['code' => 'PLN', 'name' => 'zł', 'exchange_rate' => 1],
         ];
 
         foreach ($currencies as $currency) {
